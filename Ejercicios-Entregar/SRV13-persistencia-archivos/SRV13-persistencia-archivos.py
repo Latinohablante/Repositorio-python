@@ -17,12 +17,19 @@ print("Cantidad de correos de origen distintos:", cl)
 #     print(email)
 
 
-for lista in setEmailListas:
-    # comprueba si hay elementos repetidos
-    while setEmailListas.count(lista) > 1:
-        # si es True, elimina todas las apariciones adicionales exepto 1
-        setEmailListas.remove(lista)
 
+for email in setEmailListas:
+    # comprueba si hay elementos repetidos
+    while setEmailListas.count(email) > 1:
+        # si es True, elimina todas las apariciones adicionales exepto 1
+        setEmailListas.remove(email)
+
+fd2 = open("Ejercicios-Entregar/SRV13-persistencia-archivos/correos.txt", "w")
 
 for email in reversed(setEmailListas):
-    fd.write(f"{email} enviado [ok]")
+    envio = (f"{email} enviado [ok]")
+    print(envio)
+    fd2.write(envio + "\n")
+
+
+
