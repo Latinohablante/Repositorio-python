@@ -31,5 +31,4 @@ for email in reversed(setEmailListas):
     print(envio)
     fd2.write(envio + "\n")
 
-
-
+fd2.close()
