@@ -6,7 +6,7 @@ fd = open("Temas de Clase/Archivos/mbox-short.txt", "r")
 # cl = 0
 setEmail = set() # set() -> crea un conjunto vacio
 for linea in fd:
-    if linea.startswith("To:"):
+    if linea.startswith("From:"):
         # cl += 1
         # email = linea.split()[1]
         # print(email)
