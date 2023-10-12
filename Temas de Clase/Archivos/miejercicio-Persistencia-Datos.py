@@ -16,7 +16,7 @@ for linea in fd:
 fd.close()
 
 cl = len(setEmail)
-print("Cantidad de correos de origen distintos:", cl)
+print("Cantidad de correos de destino distintos:", cl)
 
 # for email in sorted(setEmail, reverse=False, key=lambda x:len(x)):
 #     print(email)
