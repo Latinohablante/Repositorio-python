@@ -1,0 +1,7 @@
+ID,NOMBRE,EDAD,SEXO,TELEFONO
+12,Brandon Edilson Herrera Caceres,20,M,3152585180
+13,Camilo Andrés Hernandez Torres,25,M,3215448954
+14,Carlos Jhoan Aguilar,22,M,3152456411
+15,Christian Leonardo Celis Ardila,22,M,3152587412
+16,Daniel Alberto Cruz Porras,30,M,3152987512
+17,Daniel Andrés Tobon Comba,22,M,3156548411

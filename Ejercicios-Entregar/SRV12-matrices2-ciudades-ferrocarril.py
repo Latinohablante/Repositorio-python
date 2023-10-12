@@ -17,12 +17,16 @@ def llenarMatriz(mat):
     for f in range(len(mat)):
         print(f"\nFila #{f+1}")
         for c in range(len(mat[f])):
+            
             mat[f][c] = input(f"ciudad[{f+1}][{c+1}]? ")
             
+def enlaceFerrovial(mat):
+    pass
+                
 
 N = int(input("Ingrese el número de ciudades: "))
 conexiones = int(input("Ingrese el número máximo de conexiones de una ciudad dentro de la red ferroviaria: "))
 
-matriz = crearMatrices(N,conexiones)
-llenarMatriz(matriz)
-printMatriz(matriz)
+matCiudades = crearMatrices(N,conexiones)
+llenarMatriz(matCiudades)
+printMatriz(matCiudades)
