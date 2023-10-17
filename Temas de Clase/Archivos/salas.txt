@@ -1,5 +1,0 @@
-sputnik
-	apolo
-Nave espacial
-houston
-artemis
