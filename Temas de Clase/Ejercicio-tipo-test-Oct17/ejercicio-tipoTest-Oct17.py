@@ -160,7 +160,7 @@ def listarLibrosPrecio(lstLibros):
     # print(lstLibros)
     for i in range(n-1):
         intercambio = False
- 
+
         for j in range(n-1-i):
             # k -> llave del codigo de la posición j de la lista
             # k1 -> llave del codigo de la posicion j+1 de la lista
@@ -171,7 +171,7 @@ def listarLibrosPrecio(lstLibros):
             if k > k1:
                 lstLibros[j], lstLibros[j+1] = lstLibros[j+1], lstLibros[j]
                 intercambio = True
- 
+
         if intercambio == False:
             break
     #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
@@ -365,7 +365,7 @@ def consultarLibro(lstLibros):
 
 # programa principal
 rutaFile = "Temas de Clase/Ejercicio-tipo-test-Oct17/lst-libros.json"
-lstLibros= []
+lstLibros = []
 lstLibros = cargarInfo(lstLibros, rutaFile)
 
 while True:
