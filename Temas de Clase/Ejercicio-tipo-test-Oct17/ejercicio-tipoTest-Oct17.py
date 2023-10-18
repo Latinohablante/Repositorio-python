@@ -63,6 +63,8 @@ def burbuja_optimus(lstLibros):
             break
     return lstLibros
 
+
+# funcion listar libros por título
 def listarLibrosTitulo(lstLibros):
     ini = 0
     fin = 3
@@ -104,8 +106,94 @@ def listarLibrosTitulo(lstLibros):
             return
         ini +=3
         fin +=3
+    return lstLibros
 
+# funcion listar libros por autor
+def listarLibrosAutor(lstLibros):
+    ini = 0
+    fin = 3
+    n = len(lstLibros)
+    # print(lstLibros)
+    for i in range(n-1):
+        intercambio = False
+ 
+        for j in range(n-1-i):
+            # k -> llave del codigo de la posición j de la lista
+            # k1 -> llave del codigo de la posicion j+1 de la lista
+            k = list(lstLibros[j].items())[0][1]["autor"]
+            k1 = list(lstLibros[j+1].items())[0][1]["autor"]
+            #print(list(lstLibros[j].items())[0][1]["titulo"])
+            #print("K, K+1, nombre: ", k, k1, nom)
+            if k > k1:
+                lstLibros[j], lstLibros[j+1] = lstLibros[j+1], lstLibros[j]
+                intercambio = True
+ 
+        if intercambio == False:
+            break
+    #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
+    print("{:<20} {:<20} {:<20}".format( "Autor", "Título Libro", "Precio"))
+    while True:
+        for i in range(ini,fin):
+            if i >= len(lstLibros):
+                return
+            else:  
+                for elemento in lstLibros[i]:  
+                    #print(f"{lstLibros[i][elemento]['titulo']}\t\t\t{lstLibros[i][elemento]['autor']}\t\t\t${lstLibros[i][elemento]['precio']:,}")
+                    print("{:<20} {:<20} {:<20}".format(lstLibros[i][elemento]['autor'],lstLibros[i][elemento]['titulo'],lstLibros[i][elemento]['precio']))
+        while True:
+            continuar = int(input("\nSi desea continuar digite 1, si quiere salir presione 2: "))
+            if continuar < 1 or continuar > 2:
+                print("Ingrese una opción valida")
+                continue
+            break
+        if continuar == 2:
+            return
+        ini +=3
+        fin +=3
+    return lstLibros
     
+# funcion listar libros por precio
+def listarLibrosPrecio(lstLibros):
+    ini = 0
+    fin = 3
+    n = len(lstLibros)
+    # print(lstLibros)
+    for i in range(n-1):
+        intercambio = False
+ 
+        for j in range(n-1-i):
+            # k -> llave del codigo de la posición j de la lista
+            # k1 -> llave del codigo de la posicion j+1 de la lista
+            k = list(lstLibros[j].items())[0][1]["precio"]
+            k1 = list(lstLibros[j+1].items())[0][1]["precio"]
+            #print(list(lstLibros[j].items())[0][1]["titulo"])
+            #print("K, K+1, nombre: ", k, k1, nom)
+            if k > k1:
+                lstLibros[j], lstLibros[j+1] = lstLibros[j+1], lstLibros[j]
+                intercambio = True
+ 
+        if intercambio == False:
+            break
+    #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
+    print("{:<20} {:<20} {:<20}".format("Precio", "Autor", "Título Libro"))
+    while True:
+        for i in range(ini,fin):
+            if i >= len(lstLibros):
+                return
+            else:  
+                for elemento in lstLibros[i]:  
+                    #print(f"{lstLibros[i][elemento]['titulo']}\t\t\t{lstLibros[i][elemento]['autor']}\t\t\t${lstLibros[i][elemento]['precio']:,}")
+                    print("{:<20} {:<20} {:<20}".format(lstLibros[i][elemento]['precio'],lstLibros[i][elemento]['autor'],lstLibros[i][elemento]['titulo']))
+        while True:
+            continuar = int(input("\nSi desea continuar digite 1, si quiere salir presione 2: "))
+            if continuar < 1 or continuar > 2:
+                print("Ingrese una opción valida")
+                continue
+            break
+        if continuar == 2:
+            return
+        ini +=3
+        fin +=3
     return lstLibros
 
 def guardarLibro(lstLibros , ruta): 
@@ -295,9 +383,9 @@ while True:
     elif op == 5:
         listarLibrosTitulo(lstLibros)
     elif op == 6:
-        consultarLibro(lstLibros)
+        listarLibrosAutor(lstLibros)
     elif op == 7:
-        consultarLibro(lstLibros)
+        listarLibrosPrecio(lstLibros)
     elif op == 8:
         print("Gracias por usar el software") 
         break
