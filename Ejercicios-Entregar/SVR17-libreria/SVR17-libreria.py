@@ -4,6 +4,26 @@ import json
 
 # funciones
 
+# funcion ordenamiento burbuja para cadenas
+# Aún no funciona esta parte del código
+
+
+# def burbuja_optimus(arreglo,cod):
+#     n = len(arreglo)
+  
+#     for i in range(n-1):
+#         intercambio = False
+ 
+#         for j in range(n-1-i):
+#             if arreglo[j][f"{cod}"] > arreglo[j+1][f"{cod}"]:
+#                 arreglo[j][f"{cod}"], arreglo[j+1][f"{cod}"] = arreglo[j+1][f"{cod}"], arreglo[j][f"{cod}"]
+#                 intercambio = True
+ 
+#         if intercambio == False:
+#             break
+#     return arreglo
+
+
 # función guardar libro
 
 def guardarLibro(lstLibros , ruta): 
@@ -40,12 +60,12 @@ def existeCod(cod, lstLibros):
 def agregarLibro(lstLibros , ruta): 
     print("\n\n1. Agregar Libro") 
 
-    cod = input("Ingrese el ID: ")
+    cod = input("Ingrese el código del libro: ")
 
     while  existeCod(cod , lstLibros):  
         print("-> Ya existe un libro con ese código") 
         input("Presione Enter para continuar") 
-        cod = int(input("\nIngrese el código: "))  
+        cod = input("\nIngrese el código: ")
 
     titulo = input("Título: ") 
     autor = input("Autor: ")
@@ -55,6 +75,8 @@ def agregarLibro(lstLibros , ruta):
     dicLibro[cod] = {"titulo":titulo , "autor":autor , "precio":precio} 
 
     lstLibros.append(dicLibro) 
+    lstLibros = burbuja_optimus(lstLibros,cod)
+
 
     if guardarLibro(lstLibros , ruta)  == True:
 
@@ -139,7 +161,7 @@ def mostrarLibro(lstLibros):
 
 
 # programa principal
-rutaFile = "Ejercicios-Entregar\SVR17-libreria/lst-libros.json"
+rutaFile = "Ejercicios-Entregar/SVR17-libreria/lst-libros.json"
 lstLibros= []
 lstLibros = cargarInfo(lstLibros, rutaFile)
 
