@@ -39,9 +39,6 @@ Se puede eliminar el uso de funciones y crear el juego en una clase, para que fu
 import random
 import os
 
-    
-
-        
 def seleccionCasilla():
     while True:
         try:
@@ -57,22 +54,45 @@ def seleccionCasilla():
 
 
 def inicializar_juego():
-    """Función que incializa los valores del juego"""
+    """Función que inicializa los valores del juego"""
     juego_en_curso = True
     jugadores = [[input("Jugador 1: "),"x"], [input("Jugador 2: "),"o"]]
     jugador_actual = random.randint(0, 1)
     tablero = [[7,8,9],[4,5,6],[1,2,3]]
     return juego_en_curso, jugadores, jugador_actual, tablero
 
-def actualizar_tablero(jugador, coordenada_fila, coordenada_columna, tablero_actual):
+def poner_ficha(jugador, coordenada_fila, coordenada_columna, tablero_actual,jugador_actual):
+    posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
+    # valido si ya hay fichas en la casilla
+    if posicion == "x" or posicion == "o":
+        # = 1 if jugador_actual == 0 else 0
+        return True
+    else:
+        return False
+        
+
+def actualizar_tablero(jugador, coordenada_fila, coordenada_columna, tablero_actual,jugador_actual):
     """Actualiza el tablero con la acción del jugador actual"""
     posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
     # valido si ya hay fichas en la casilla
     if posicion == "x" or posicion == "o":
+        jugador_actual = 1 if jugador_actual == 0 else 0
         input("Esa casilla ya tiene una ficha. Presione Enter para continuar")
+        #return tablero_actual, jugador_actual
     else:
+        # asigna la ficha del jugador a la posición escogida
         tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = jugador[1]
     return tablero_actual
+# def actualizar_tablero(jugador, coordenada_fila, coordenada_columna, tablero_actual):
+#     """Actualiza el tablero con la acción del jugador actual"""
+#     posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
+#     # valido si ya hay fichas en la casilla
+#     if posicion == "x" or posicion == "o":
+#         jugador_actual = 1 if jugador_actual == 0 else 0
+#         input("Esa casilla ya tiene una ficha. Presione Enter para continuar")
+#     else:
+#         tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = jugador[1]
+#     return tablero_actual
 
 def tablero_completo(tablero_actual):
     """Comprueba si el tablero está completo, devuelve True o False"""
@@ -124,6 +144,8 @@ def comprobar_ganador(jugador, tablero_actual):
 
 juego_en_curso, jugadores, jugador_actual, tablero = inicializar_juego()
 
+
+
 while juego_en_curso:
     if tablero_completo(tablero):
         juego_en_curso = False
@@ -135,7 +157,7 @@ while juego_en_curso:
     print("Turno de: " + jugadores[jugador_actual][0])
     #Dibujar tablero
     for linea in tablero:
-        print(linea[0], linea[1], linea[2])
+        print(linea[0],"|", linea[1],"|", linea[2])
     
     # print("0 1 2 3")
     # coordenadas_vertical = 1
@@ -178,8 +200,11 @@ while juego_en_curso:
             break
     #coordenada_fila, coordenada_columna = list(map(int, input("Elige coordenadas: ")))
     
+    ponerFicha = poner_ficha(jugadores[jugador_actual], coordenada_fila,coordenada_columna, tablero,jugador_actual)
+
+    
     #Actualizar tablero
-    tablero = actualizar_tablero(jugadores[jugador_actual], coordenada_fila, coordenada_columna, tablero)
+    tablero = actualizar_tablero(jugadores[jugador_actual], coordenada_fila, coordenada_columna, tablero,jugador_actual)
     
     #Comprobamos si ha ganado
     if comprobar_ganador(jugadores[jugador_actual], tablero):
@@ -189,7 +214,7 @@ while juego_en_curso:
         os.system("cls")
         print("Ganador: ",jugadores[jugador_actual][0])
         for linea in tablero:
-            print(linea[0], linea[1], linea[2])
+            print(linea[0],"|", linea[1],"|", linea[2])
         
         # print("0 1 2 3")
         # coordenadas_vertical = 1
@@ -199,8 +224,11 @@ while juego_en_curso:
         
         
     #Cambio de jugador
-    #jugador_actual = 1 if jugador_actual == 0 else 0
-    if jugador_actual == 0:
-        jugador_actual = 1
-    else:
-        jugador_actual = 0
+    if ponerFicha == False:
+        jugador_actual = 1 if jugador_actual == 0 else 0
+    else:    
+        continue
+    # if jugador_actual == 0:
+    #     jugador_actual = 1
+    # else:
+    #     jugador_actual = 0
