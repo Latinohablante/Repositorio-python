@@ -25,7 +25,7 @@ def guardarJugador(lstLibros , ruta):
 # Funcion que analiza si existe el nombre en el archivo json
 def existeNombre(nombre, lstGanadores): 
     for datos in lstGanadores:  
-        k = str(list(datos.keys())[0]) # Devuelve la lista de las llaves pero se debe colocar el list para que la ordene correctamente en la lista
+        k = str(list(datos.keys())[0]) # Devuelve la lista de las llaves pero se debe colocar el list para que la ordene correctamente en la lista y el [0] para que tome la posición 0 que en este caso es el nombre del jugador
         if k == nombre:
             return True 
     return False
@@ -58,7 +58,6 @@ def cargarInfo(lstGanadores, rutaGanadores):
     return lstGanadores #Devuelve la lista cargada
 
 # función que lee el nombre del jugador
-
 def leerNombreJugador(msj):
     while True:
         try:
@@ -72,40 +71,41 @@ def leerNombreJugador(msj):
             print("Error al ingresar el nombre.", e)
 
 # funcion agregar nombre de jugador
-
 def agregarJugador(lstGanadores , ruta): 
     print("\n\n Agregar Jugador") 
 
     nombre = leerNombreJugador("Ingrese el nombre del jugador: ")
-
-    while  existeNombre(nombre , lstGanadores):  
-        print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
-        input("Presione Enter para continuar") 
+    if lstGanadores != []:
+        while  existeNombre(nombre , lstGanadores):  
+            print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
+            input("Presione Enter para continuar") 
         nombre = input("\nIngrese el nombre del jugador: ")
-
-    movimientos = input("Movimientos: (Aquí van los movimientos)")
-    tiempo = input("Tiempo: (Esta parte hay que arreglarla)")
-    ficha = input("Esta es la ficha del jugador")
-
-
-    dicJugador = {}
-    dicJugador[nombre] = {"tiempo":tiempo,"movimientos":movimientos,"ficha":ficha}
-
-    lstGanadores.append(dicJugador)
-    # burbuja_optimus(lstLibros)
-
-    if guardarJugador(lstGanadores , ruta)  == True:
-
-        input("El Jugador ha sido guardado en la lista de jugadores con éxito.\nPresione Enter para continuar")
     
-    else: 
-        input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
+    else:
+        movimientos = input("Movimientos: (Aquí van los movimientos)")
+        tiempo = input("Tiempo: (Esta parte hay que arreglarla)")
+        ficha = input("Esta es la ficha del jugador")
 
-def fichaJugador(jugador1,jugador2):
+
+        dicJugador = {}
+        dicJugador[nombre] = {"tiempo":tiempo,"movimientos":movimientos,"ficha":ficha}
+
+        lstGanadores.append(dicJugador)
+        # burbuja_optimus(lstLibros)
+
+        if guardarJugador(lstGanadores , ruta)  == True:
+
+            input("El Jugador ha sido guardado en la lista de jugadores con éxito.\nPresione Enter para continuar")
+        
+        else: 
+            input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
+
+def fichaJugador(jugador1,lstGanadores):
     while True:
         try:
             ficha = input(f"{jugador1} Ingrese la ficha con la que quiere jugar [ X ] o [ O ]: ")
-            if ficha == "X" or ficha == "O":
+            if ficha.lower() == "x" or ficha.lower() == "o":
+                list(lstGanadores[jugador1].items())[0][1]["ficha"] = ficha
                 break
             else:
                 print("Elección inválida. Ingrese [ X ] o [ O ]")
@@ -121,7 +121,7 @@ def menu():
             print("*** JUEGO TIC TAC TOE ***".center(40))
             print("MENU".center(40))
             print("1. Jugar con un amigo ")
-            print("2. Consultar tabla de posiciones ")
+            print("2. Consultar tabla de posiciones")
             print("3. Reglas del juego")
             print("4. Salir ")
             op = int(input(">>> Opción (1-4)? "))
