@@ -4,18 +4,18 @@ import json
 # FUNCIONES
 
 # Funcion que guarda al ganador
-def guardarJugador(lstLibros , ruta): 
+def guardarJugador(lstGanadores , ruta): 
     
     try: 
         fd = open(ruta , "w") # Abre el archivo
     except Exception as e: 
-        print("Error al abrir el archivo para guardar el libro\n" , e) 
+        print("Error al abrir el archivo para guardar el jugador\n" , e) 
         return None
     
     try: 
-        json.dump(lstLibros, fd) # Guarda el archivo
+        json.dump(lstGanadores, fd) # Guarda el archivo
     except Exception as e: 
-        print("Error al guardar la informacion del libro\n" , e)
+        print("Error al guardar la informacion del jugador\n" , e)
         return None
 
     fd.close() # Cierra el archivo
@@ -71,34 +71,35 @@ def leerNombreJugador(msj):
             print("Error al ingresar el nombre.", e)
 
 # funcion agregar nombre de jugador
-def agregarJugador(lstGanadores , ruta): 
+def agregarJugador(lstGanadores,lstJugadores, ruta): 
     print("\n\n Agregar Jugador") 
 
     nombre = leerNombreJugador("Ingrese el nombre del jugador: ")
-    if lstGanadores != []:
-        while  existeNombre(nombre , lstGanadores):  
-            print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
-            input("Presione Enter para continuar") 
-        nombre = input("\nIngrese el nombre del jugador: ")
     
-    else:
-        movimientos = input("Movimientos: (Aquí van los movimientos)")
-        tiempo = input("Tiempo: (Esta parte hay que arreglarla)")
-        ficha = input("Esta es la ficha del jugador")
+    while  existeNombre(nombre , lstGanadores):  
+        print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
+        input("Presione Enter para continuar")
+        break
+    nombre = input("\nIngrese el nombre del jugador: ")
 
 
-        dicJugador = {}
-        dicJugador[nombre] = {"tiempo":tiempo,"movimientos":movimientos,"ficha":ficha}
+    movimientos = input("Movimientos: (Aquí van los movimientos)")
+    tiempo = input("Tiempo: (Esta parte hay que arreglarla)")
+    ficha = input("Esta es la ficha del jugador")
 
-        lstGanadores.append(dicJugador)
-        # burbuja_optimus(lstLibros)
 
-        if guardarJugador(lstGanadores , ruta)  == True:
+    dicJugador = {}
+    dicJugador[nombre] = {"movimientos":movimientos,"tiempo":tiempo,"ficha":ficha}
 
-            input("El Jugador ha sido guardado en la lista de jugadores con éxito.\nPresione Enter para continuar")
-        
-        else: 
-            input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
+    lstJugadores.append(dicJugador)
+    # burbuja_optimus(lstLibros)
+
+    if guardarJugador(lstGanadores , ruta)  == True:
+
+        input("El Jugador ha sido guardado en la lista de jugadores con éxito.\nPresione Enter para continuar")
+    
+    else: 
+        input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
 
 def fichaJugador(jugador1,lstGanadores):
     while True:
@@ -138,6 +139,7 @@ def menu():
 
 rutaGanadores = "Ejercicios-Entregar/Proyecto-Tic-Tac-Toe/lst-Ganadores.json"
 lstGanadores = []
+lstJugadores = []
 lstGanadores = cargarInfo(lstGanadores, rutaGanadores)
 
 while True:
@@ -145,8 +147,8 @@ while True:
     op = menu()
 
     if op == 1:
-        jugador1 = agregarJugador(lstGanadores,rutaGanadores)
-        jugador2 = agregarJugador(lstGanadores,rutaGanadores)
+        jugador1 = agregarJugador(lstGanadores,lstJugadores,rutaGanadores)
+        jugador2 = agregarJugador(lstGanadores,lstJugadores,rutaGanadores)
         ficha = fichaJugador(jugador1)
     elif op == 2:
         consultarLibro(lstLibros)
