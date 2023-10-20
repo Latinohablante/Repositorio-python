@@ -68,7 +68,7 @@ def cargarInfo(lstGanadores, rutaGanadores):
     return lstGanadores #Devuelve la lista cargada
 
 # Funcion que guarda al ganador
-def guardarJugador(lstGanadores , ruta): 
+def guardarGanador(lstGanadores , ruta): 
     
     try: 
         fd = open(ruta , "w") # Abre el archivo
@@ -84,6 +84,91 @@ def guardarJugador(lstGanadores , ruta):
 
     fd.close() # Cierra el archivo
     return True
+
+# funcion ordenamiento burbuja para cadenas
+def burbuja_optimus(lstGanadores):
+    n = len(lstGanadores)
+    # print(lstLibros)
+    for i in range(n-1):
+        intercambio = False
+ 
+        for j in range(n-1-i):
+            # k -> llave del codigo de la posición j de la lista
+            # k1 -> llave del codigo de la posicion j+1 de la lista
+            k = list(lstGanadores[j].items())[0][0]
+            k1 = list(lstGanadores[j+1].items())[0][0]
+            print(list(lstGanadores[j].items())[0][1]["movimientos"])
+            #print("K, K+1, nombre: ", k, k1, nom)
+            if k > k1:
+                lstGanadores[j], lstGanadores[j+1] = lstGanadores[j+1], lstGanadores[j]
+                intercambio = True
+ 
+        if intercambio == False:
+            break
+    return lstGanadores
+
+
+# funcion listar libros por título
+def listarGanadores(lstGanadores):
+    ini = 0
+    fin = 3
+    n = len(lstGanadores)
+    # print(lstGanadores)
+    for i in range(n-1):
+        intercambio = False
+ 
+        for j in range(n-1-i):
+            # k -> llave del codigo de la posición j de la lista
+            # k1 -> llave del codigo de la posicion j+1 de la lista
+            k = list(lstGanadores[j].items())[0][1]["movimientos"]
+            k1 = list(lstGanadores[j+1].items())[0][1]["movimientos"]
+            
+            #print(list(lstGanadores[j].items())[0][1]["titulo"])
+            #print("K, K+1, nombre: ", k, k1, nom)
+            
+            if k == k1:
+                for l in range(n-1):
+                    intercambio = False
+ 
+                    for f in range(n-1-l):
+                        # k -> llave del codigo de la posición j de la lista
+                        # k1 -> llave del codigo de la posicion j+1 de la lista
+                        m = list(lstGanadores[f].items())[0][1]["tiempo"]
+                        m1 = list(lstGanadores[f].items())[0][1]["tiempo"]
+                        if m > m1:
+                            lstGanadores[f], lstGanadores[f+1] = lstGanadores[f+1], lstGanadores[f]
+                            intercambio = True
+            elif k > k1:
+                lstGanadores[j], lstGanadores[j+1] = lstGanadores[j+1], lstGanadores[j]
+                intercambio = True
+
+
+ 
+        if intercambio == False:
+            break
+    #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
+    print("{:<20} {:<20} {:<20}".format("movimientos", "tiempo", "Ficha"))
+    while True:
+        for i in range(ini,fin):
+            if i >= len(lstGanadores):
+                return
+            else:  
+                for elemento in lstGanadores[i]:  
+                    #print(f"{lstGanadores[i][elemento]['titulo']}\t\t\t{lstGanadores[i][elemento]['autor']}\t\t\t${lstGanadores[i][elemento]['precio']:,}")
+                    print("{:<20} {:<20} {:<20}".format(lstGanadores[i][elemento]['movimientos'],lstGanadores[i][elemento]['tiempo'],lstGanadores[i][elemento]['ficha']))
+        while True:
+            continuar = int(input("\nSi desea continuar digite 1, si quiere salir presione 2: "))
+            if continuar < 1 or continuar > 2:
+                print("Ingrese una opción valida")
+                continue
+            break
+        if continuar == 2:
+            return
+        ini +=3
+        fin +=3
+    return lstGanadores
+
+
 
 def seleccionCasilla():
     while True:
@@ -156,9 +241,7 @@ def agregarJugador1(lstGanadores,lstJugadores, ruta):
     while  existeNombre(nombre , lstGanadores):  
         print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
         input("Presione Enter para continuar")
-        break
-    #nombre = input("\nIngrese el nombre del jugador: ")
-
+        nombre = leerNombreJugador("Ingrese el nombre del jugador 1: ")
 
     movimientos = 0
     tiempo = 0
@@ -167,7 +250,7 @@ def agregarJugador1(lstGanadores,lstJugadores, ruta):
     dicJugador[nombre] = {"movimientos":movimientos,"tiempo":tiempo,"ficha":ficha}
     lstJugadores.append(dicJugador)
     ficha = fichaJugador(nombre,lstJugadores)
-    # burbuja_optimus(lstLibros)
+    # burbuja_optimus(lstGanadores)
 
     # if guardarJugador(lstGanadores , ruta)  == True:
 
@@ -184,9 +267,7 @@ def agregarJugador2(lstGanadores,lstJugadores, ruta):
     while  existeNombre(nombre , lstGanadores):  
         print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
         input("Presione Enter para continuar")
-        break
-    #nombre = input("\nIngrese el nombre del jugador: ")
-
+        nombre = leerNombreJugador("Ingrese el nombre del jugador 2: ")
 
     movimientos = 0
     tiempo = 0
@@ -314,27 +395,28 @@ def jugando():
         # for linea in tablero:
         #     print(coordenadas_vertical, linea[0], linea[1], linea[2])
         #     coordenadas_vertical += 1
-        tiempo = 0
-        tiempo2 = 0
 
         #Selección de casilla
         while True:
             
-            contador = 0
             if jugador_actual == 0:
+                list(lstJugadores[jugador_actual].items())[0][1]["movimientos"] += 1
                 lstJugadores[jugador_actual]
                 comienzoTiemJug1 = time.time()
                 op = seleccionCasilla()
                 finalTiemJug1 = time.time()
-                tiempo += finalTiemJug1 - comienzoTiemJug1
-                print(tiempo)
+                list(lstJugadores[jugador_actual].items())[0][1]["tiempo"] += finalTiemJug1 - comienzoTiemJug1
+                print("Tiempo 1: ",list(lstJugadores[jugador_actual].items())[0][1]["tiempo"])
+                print("Movimientos", list(lstJugadores[jugador_actual].items())[0][1]["movimientos"])
             else:
+                list(lstJugadores[jugador_actual].items())[0][1]["movimientos"] += 1
                 lstJugadores[jugador_actual]
                 comienzoTiemJug2 = time.time()
                 op = seleccionCasilla()
                 finalTiemJug2 = time.time()
-                tiempo2 += finalTiemJug2 - comienzoTiemJug2
-                print(tiempo2)
+                list(lstJugadores[jugador_actual].items())[0][1]["tiempo"] += finalTiemJug2 - comienzoTiemJug2
+                print("Tiempo 2: ",list(lstJugadores[jugador_actual].items())[0][1]["tiempo"])
+                print("Movimientos", list(lstJugadores[jugador_actual].items())[0][1]["movimientos"])
 
             if op == 1:
                 coordenada_fila, coordenada_columna = list(map(int,"31"))
@@ -379,9 +461,13 @@ def jugando():
             #Dibujar tablero Ganador
             os.system("clear")
             print("Ganador: ",list(lstJugadores[jugador_actual].keys())[0])
-
+            lstGanadores.append(lstJugadores[jugador_actual])
+            print(lstGanadores)
+            guardarGanador(lstGanadores,rutaGanadores)
             for linea in tablero:
                 print(linea[0],"|", linea[1],"|", linea[2])
+            input("Presione Enter para volver al menú")
+            os.system("clear")
 
             # print("0 1 2 3")
             # coordenadas_vertical = 1
@@ -436,7 +522,7 @@ while True:
     if op == 1:
         jugando()
     elif op == 2:
-        consultarGanadores(lstGanadores)
+        listarGanadores(lstGanadores)
         pass
     elif op == 3:
         consultarLibro(lstLibros)
