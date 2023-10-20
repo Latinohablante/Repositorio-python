@@ -111,7 +111,7 @@ def burbuja_optimus(lstGanadores):
 # funcion listar libros por título
 def listarGanadores(lstGanadores):
     ini = 0
-    fin = 3
+    fin = 5
     n = len(lstGanadores)
     # print(lstGanadores)
     for i in range(n-1):
@@ -134,7 +134,7 @@ def listarGanadores(lstGanadores):
                         # k -> llave del codigo de la posición j de la lista
                         # k1 -> llave del codigo de la posicion j+1 de la lista
                         m = list(lstGanadores[f].items())[0][1]["tiempo"]
-                        m1 = list(lstGanadores[f].items())[0][1]["tiempo"]
+                        m1 = list(lstGanadores[f+1].items())[0][1]["tiempo"]
                         if m > m1:
                             lstGanadores[f], lstGanadores[f+1] = lstGanadores[f+1], lstGanadores[f]
                             intercambio = True
@@ -234,7 +234,6 @@ def fichaJugador2(lstJugadores):
 
 # funcion agregar nombre de jugador 1
 def agregarJugador1(lstGanadores,lstJugadores, ruta): 
-    print("\n\n Agregar Jugador 1") 
 
     nombre = leerNombreJugador("Ingrese el nombre del jugador 1: ")
     
@@ -260,7 +259,6 @@ def agregarJugador1(lstGanadores,lstJugadores, ruta):
     #     input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
 
 def agregarJugador2(lstGanadores,lstJugadores, ruta): 
-    print("\n\n Agregar Jugador 2") 
 
     nombre = leerNombreJugador("Ingrese el nombre del jugador 2: ")
     
@@ -278,9 +276,6 @@ def agregarJugador2(lstGanadores,lstJugadores, ruta):
     lstJugadores.append(dicJugador)
     ficha = fichaJugador2(lstJugadores)
     # list(lstJugadores[1].items())[0][1]["ficha"] = ficha
-    print(lstJugadores)
-    input()
-
 
 
 
@@ -385,7 +380,7 @@ def jugando():
         os.system("clear")
         #Nuevo turno
         # Aquí cambie el + por una coma
-        print("Turno de: ", lstJugadores[jugador_actual])
+        print("Turno de: ", list(lstJugadores[jugador_actual].keys())[0])
         #Dibujar tablero
         for linea in tablero:
             print(linea[0],"|", linea[1],"|", linea[2])
@@ -462,7 +457,7 @@ def jugando():
             os.system("clear")
             print("Ganador: ",list(lstJugadores[jugador_actual].keys())[0])
             lstGanadores.append(lstJugadores[jugador_actual])
-            print(lstGanadores)
+            #print(lstGanadores)
             guardarGanador(lstGanadores,rutaGanadores)
             for linea in tablero:
                 print(linea[0],"|", linea[1],"|", linea[2])
@@ -495,16 +490,15 @@ def menu():
             print("MENU".center(40))
             print("1. Jugar con un amigo ")
             print("2. Consultar tabla de posiciones")
-            print("3. Reglas del juego")
-            print("4. Salir ")
-            op = int(input(">>> Opción (1-4)? "))
+            print("3. Salir ")
+            op = int(input(">>> Opción (1-3)? "))
             if op < 1 or op > 4:
-                print("Opción no válida. Escoja de 1 a 4.")
+                print("Opción no válida. Escoja de 1 a 3.")
                 input("Presione Enter para continuar...")
                 continue
             return op
         except ValueError:
-            print("Opción no válida. Escoja de 1 a 4.")
+            print("Opción no válida. Escoja de 1 a 3.")
             input("Presione Enter para continuar...")
 
 
@@ -525,8 +519,5 @@ while True:
         listarGanadores(lstGanadores)
         pass
     elif op == 3:
-        consultarLibro(lstLibros)
-        pass
-    elif op == 4:
         print("Gracias por usar el software")
         break
