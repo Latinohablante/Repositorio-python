@@ -70,6 +70,19 @@ def leerNombreJugador(msj):
         except Exception as e:
             print("Error al ingresar el nombre.", e)
 
+def fichaJugador(jugador1,lstGanadores):
+    while True:
+        try:
+            ficha = input(f"{jugador1} Ingrese la ficha con la que quiere jugar [ X ] o [ O ]: ")
+            if ficha.lower() == "x" or ficha.lower() == "o":
+                list(lstGanadores[jugador1].items())[0][1]["ficha"] = ficha
+                break
+            else:
+                print("Elección inválida. Ingrese [ x ] o [ o ]")
+                continue
+        except ValueError:
+            print("Error. Elección inválida.")
+
 # funcion agregar nombre de jugador
 def agregarJugador(lstGanadores,lstJugadores, ruta): 
     print("\n\n Agregar Jugador") 
@@ -85,7 +98,7 @@ def agregarJugador(lstGanadores,lstJugadores, ruta):
 
     movimientos = input("Movimientos: (Aquí van los movimientos)")
     tiempo = input("Tiempo: (Esta parte hay que arreglarla)")
-    ficha = input("Esta es la ficha del jugador")
+    ficha = fichaJugador()
 
 
     dicJugador = {}
@@ -101,18 +114,7 @@ def agregarJugador(lstGanadores,lstJugadores, ruta):
     else: 
         input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
 
-def fichaJugador(jugador1,lstGanadores):
-    while True:
-        try:
-            ficha = input(f"{jugador1} Ingrese la ficha con la que quiere jugar [ X ] o [ O ]: ")
-            if ficha.lower() == "x" or ficha.lower() == "o":
-                list(lstGanadores[jugador1].items())[0][1]["ficha"] = ficha
-                break
-            else:
-                print("Elección inválida. Ingrese [ X ] o [ O ]")
-                continue
-        except ValueError:
-            print("Error. Elección inválida.")
+
 
 # funcion menu
 

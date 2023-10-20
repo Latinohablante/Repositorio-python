@@ -20,7 +20,7 @@ El proceso que se ha seguido es el siguiente:
 5. Ahora se inicializa el juego llamando a la función inicializar_juego y guardando los valores que devuelve en variables.
 6. A continuación se crea un bucle controlado por la variable juego_en_curso.
     - Lo primero que hacemos en el bucle es comprobar si el tablero esta completo, llamando a la función tablero_completo, si está lleno damos valor False a la variable juego_en_curso, rompemos el bucle principal e informamos al usuario de que no hay ganador.
-    - Limpiamos siempre la pantalla con os.system(«cls»).
+    - Limpiamos siempre la pantalla con os.system(«clear»).
     - Imprime un mensaje con el nombre del jugador actual.
     - Dibujamos el tablero, con las coordenadas horizontales y verticales.
     - Imprime un mensaje indicando que seleccione coordenadas, se deben introducir dos números consecutivos, sin espacios, que serán las coordenadas elegidas por el jugador.
@@ -35,9 +35,55 @@ Se repite código en varios lugares, deberían de crearse funciones para evitarl
 Se puede eliminar el uso de funciones y crear el juego en una clase, para que funcione mediante programación orientada a objetos, pensad que cada nuevo juego podría ser un objeto.
 
 """
-
-import random
+import json
 import os
+import time
+
+
+
+# Funcion que carga el archivo json
+def cargarInfo(lstGanadores, rutaGanadores):
+    try: 
+        fd = open(rutaGanadores, "r") #Fd es la apertura del archivo
+    except Exception as e:  
+
+        try: 
+            fd = open(rutaGanadores , "w")  
+        except Exception as d:  
+            print("Error al intentar abrir el archivo\n" , d) 
+            return None 
+    try:
+        linea = fd.readline()
+        if linea.strip() != "": # Si tiene el archivo algo de contenido cargará los datos, sino creará una lista vacia.
+            fd.seek(0) # Posiciona el puntero en 0
+            lstGanadores = json.load(fd) # json.load() --> carga el archivo
+        else: 
+            lstGanadores = []
+    except Exception as e: 
+        print("Error al cargar la informacion\n" , e) 
+        return None 
+    
+    # print(lstPersonal) # -> imprime si el archivo existe
+    fd.close() #Si se carga todo cierre el archivo
+    return lstGanadores #Devuelve la lista cargada
+
+# Funcion que guarda al ganador
+def guardarJugador(lstGanadores , ruta): 
+    
+    try: 
+        fd = open(ruta , "w") # Abre el archivo
+    except Exception as e: 
+        print("Error al abrir el archivo para guardar el jugador\n" , e) 
+        return None
+    
+    try: 
+        json.dump(lstGanadores, fd) # Guarda el archivo
+    except Exception as e: 
+        print("Error al guardar la informacion del jugador\n" , e)
+        return None
+
+    fd.close() # Cierra el archivo
+    return True
 
 def seleccionCasilla():
     while True:
@@ -52,16 +98,123 @@ def seleccionCasilla():
             print("Opción no válida. Escoja de 1 a 9.")
             input("Presione cualquier tecla para continuar...")
 
+# Funcion que analiza si existe el nombre en el archivo json
+def existeNombre(nombre, lstGanadores): 
+    for datos in lstGanadores:  
+        k = str(list(datos.keys())[0]) # Devuelve la lista de las llaves pero se debe colocar el list para que la ordene correctamente en la lista y el [0] para que tome la posición 0 que en este caso es el nombre del jugador
+        if k == nombre:
+            return True 
+    return False
+
+
+# función que lee el nombre del jugador
+def leerNombreJugador(msj):
+    while True:
+        try:
+            nom = input(msj)
+            nom = nom.strip()
+            if len(nom) == 0 or not nom.isalnum():
+                print("Nombre inválido")
+                continue
+            return nom
+        except Exception as e:
+            print("Error al ingresar el nombre.", e)
+
+# Funcion que pregunta la ficha al jugador 1
+def fichaJugador(nombre,lstJugadores):
+    while True:
+        try:
+            ficha = input(f"{nombre} Ingrese la ficha con la que quiere jugar [ X ] o [ O ]: ")
+            if ficha.lower() == "x" or ficha.lower() == "o":
+                list(lstJugadores[0].items())[0][1]["ficha"] = ficha
+                break
+            else:
+                print("Elección inválida. Ingrese [ x ] o [ o ]")
+                continue
+        except ValueError:
+            print("Error. Elección inválida.")
+    return ficha
+
+# Funcion que asigna la ficha al jugador 2
+def fichaJugador2(lstJugadores):
+    ficha1 = list(lstJugadores[0].items())[0][1]["ficha"]
+    # ficha2 = list(lstJugadores[1].items())[0][1]["ficha"]
+    # print(ficha2)
+    
+    if ficha1.lower() == "x":
+        list(lstJugadores[1].items())[0][1]["ficha"] = "o"
+    elif ficha1.lower() == "o":
+        list(lstJugadores[1].items())[0][1]["ficha"] = "x"
+    return list(lstJugadores[1].items())[0][1]["ficha"]
+
+# funcion agregar nombre de jugador 1
+def agregarJugador1(lstGanadores,lstJugadores, ruta): 
+    print("\n\n Agregar Jugador 1") 
+
+    nombre = leerNombreJugador("Ingrese el nombre del jugador 1: ")
+    
+    while  existeNombre(nombre , lstGanadores):  
+        print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
+        input("Presione Enter para continuar")
+        break
+    #nombre = input("\nIngrese el nombre del jugador: ")
+
+
+    movimientos = 0
+    tiempo = 0
+    ficha = ""
+    dicJugador = {}
+    dicJugador[nombre] = {"movimientos":movimientos,"tiempo":tiempo,"ficha":ficha}
+    lstJugadores.append(dicJugador)
+    ficha = fichaJugador(nombre,lstJugadores)
+    # burbuja_optimus(lstLibros)
+
+    # if guardarJugador(lstGanadores , ruta)  == True:
+
+    #     input("El Jugador ha sido guardado en la lista de jugadores con éxito.\nPresione Enter para continuar")
+    
+    # else: 
+    #     input("Ocurrió algún error al guardar al jugador. \nPresione Enter para continuar")
+
+def agregarJugador2(lstGanadores,lstJugadores, ruta): 
+    print("\n\n Agregar Jugador 2") 
+
+    nombre = leerNombreJugador("Ingrese el nombre del jugador 2: ")
+    
+    while  existeNombre(nombre , lstGanadores):  
+        print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
+        input("Presione Enter para continuar")
+        break
+    #nombre = input("\nIngrese el nombre del jugador: ")
+
+
+    movimientos = 0
+    tiempo = 0
+    ficha = ""
+    dicJugador = {}
+    
+    dicJugador[nombre] = {"movimientos":movimientos,"tiempo":tiempo,"ficha":ficha}
+    lstJugadores.append(dicJugador)
+    ficha = fichaJugador2(lstJugadores)
+    # list(lstJugadores[1].items())[0][1]["ficha"] = ficha
+    print(lstJugadores)
+    input()
+
+
+
 
 def inicializar_juego():
     """Función que inicializa los valores del juego"""
     juego_en_curso = True
-    jugadores = [[input("Jugador 1: "),"x"], [input("Jugador 2: "),"o"]]
-    jugador_actual = random.randint(0, 1)
+    #lstJugadores = []
+    jugador1 = agregarJugador1(lstGanadores,lstJugadores, rutaGanadores)
+    jugador2 = agregarJugador2(lstGanadores,lstJugadores, rutaGanadores)
+    # lstJugadores = [[input("Jugador 1: "),"x"], [input("Jugador 2: "),"o"]]
+    jugador_actual = 0
     tablero = [[7,8,9],[4,5,6],[1,2,3]]
-    return juego_en_curso, jugadores, jugador_actual, tablero
+    return juego_en_curso, lstJugadores, jugador_actual, tablero
 
-def poner_ficha(jugador, coordenada_fila, coordenada_columna, tablero_actual,jugador_actual):
+def poner_ficha(jugador,coordenada_fila, coordenada_columna, tablero_actual,jugador_actual):
     posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
     # valido si ya hay fichas en la casilla
     if posicion == "x" or posicion == "o":
@@ -74,25 +227,20 @@ def poner_ficha(jugador, coordenada_fila, coordenada_columna, tablero_actual,jug
 def actualizar_tablero(jugador, coordenada_fila, coordenada_columna, tablero_actual,jugador_actual):
     """Actualiza el tablero con la acción del jugador actual"""
     posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
+    
+    #print(list(jugador.items())[0][1]["ficha"])
+    #input()
     # valido si ya hay fichas en la casilla
     if posicion == "x" or posicion == "o":
-        jugador_actual = 1 if jugador_actual == 0 else 0
+        #jugador_actual = 1 if jugador_actual == 0 else 0
         input("Esa casilla ya tiene una ficha. Presione Enter para continuar")
         #return tablero_actual, jugador_actual
     else:
         # asigna la ficha del jugador a la posición escogida
-        tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = jugador[1]
+        #tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = jugador[1]
+        tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = list(jugador.items())[0][1]["ficha"]
+        
     return tablero_actual
-# def actualizar_tablero(jugador, coordenada_fila, coordenada_columna, tablero_actual):
-#     """Actualiza el tablero con la acción del jugador actual"""
-#     posicion = tablero_actual[coordenada_fila - 1][coordenada_columna - 1]
-#     # valido si ya hay fichas en la casilla
-#     if posicion == "x" or posicion == "o":
-#         jugador_actual = 1 if jugador_actual == 0 else 0
-#         input("Esa casilla ya tiene una ficha. Presione Enter para continuar")
-#     else:
-#         tablero_actual[coordenada_fila - 1][coordenada_columna - 1] = jugador[1]
-#     return tablero_actual
 
 def tablero_completo(tablero_actual):
     """Comprueba si el tablero está completo, devuelve True o False"""
@@ -108,7 +256,7 @@ def comprobar_ganador(jugador, tablero_actual):
     for i in range(3):
         ganador = True
         for x in range(3):
-            if tablero_actual[i][x] != jugador[1]:
+            if tablero_actual[i][x] != list(jugador.items())[0][1]["ficha"]:
                 ganador = False
                 break
         if ganador:
@@ -117,7 +265,7 @@ def comprobar_ganador(jugador, tablero_actual):
     for i in range(3):
         ganador = True
         for x in range(3):
-            if tablero_actual[x][i] != jugador[1]:
+            if tablero_actual[x][i] != list(jugador.items())[0][1]["ficha"]:
                 ganador = False
                 break
         if ganador:
@@ -125,7 +273,7 @@ def comprobar_ganador(jugador, tablero_actual):
     #Comprobar por diagonales
     ganador = True
     for i in range(3):
-        if tablero_actual[i][i] != jugador[1]:
+        if tablero_actual[i][i] != list(jugador.items())[0][1]["ficha"]:
             ganador = False
             break
     if ganador:
@@ -134,7 +282,7 @@ def comprobar_ganador(jugador, tablero_actual):
     
     # diagonal inversa
     for i in range(3):
-        if tablero_actual[i][3 - 1 - i] != jugador[1]:
+        if tablero_actual[i][3 - 1 - i] != list(jugador.items())[0][1]["ficha"]:
             ganador = False
             break
     if ganador:
@@ -142,93 +290,157 @@ def comprobar_ganador(jugador, tablero_actual):
     
     return False
 
-juego_en_curso, jugadores, jugador_actual, tablero = inicializar_juego()
+# juego_en_curso, lstJugadores, jugador_actual, tablero = inicializar_juego()
 
 
-
-while juego_en_curso:
-    if tablero_completo(tablero):
-        juego_en_curso = False
-        os.system("cls")
-        print("Fin del juego, no hay ganador")
-        break
-    os.system("cls")
-    #Nuevo turno
-    print("Turno de: " + jugadores[jugador_actual][0])
-    #Dibujar tablero
-    for linea in tablero:
-        print(linea[0],"|", linea[1],"|", linea[2])
-    
-    # print("0 1 2 3")
-    # coordenadas_vertical = 1
-    # for linea in tablero:
-    #     print(coordenadas_vertical, linea[0], linea[1], linea[2])
-    #     coordenadas_vertical += 1
-        
-
-    #Selección de casilla
-    while True:
-
-        op = seleccionCasilla()
-
-        if op == 1:
-            coordenada_fila, coordenada_columna = list(map(int,"31"))
+def jugando():
+    juego_en_curso, lstJugadores, jugador_actual, tablero = inicializar_juego()
+    while juego_en_curso:
+        if tablero_completo(tablero):
+            juego_en_curso = False
+            os.system("clear")
+            print("Fin del juego, no hay ganador")
             break
-        elif op == 2:
-            coordenada_fila, coordenada_columna = list(map(int,"32"))
-            break 
-        elif op == 3:
-            coordenada_fila, coordenada_columna = list(map(int,"33"))
-            break
-        elif op == 4:
-            coordenada_fila, coordenada_columna = list(map(int,"21"))
-            break
-        elif op == 5:
-            coordenada_fila, coordenada_columna = list(map(int,"22"))
-            break
-        elif op == 6:
-            coordenada_fila, coordenada_columna = list(map(int,"23"))
-            break
-        elif op == 7:
-            coordenada_fila, coordenada_columna = list(map(int,"11"))
-            break
-        elif op == 8:
-            coordenada_fila, coordenada_columna = list(map(int,"12"))
-            break
-        elif op == 9:
-            coordenada_fila, coordenada_columna = list(map(int,"13"))
-            break
-    #coordenada_fila, coordenada_columna = list(map(int, input("Elige coordenadas: ")))
-    
-    ponerFicha = poner_ficha(jugadores[jugador_actual], coordenada_fila,coordenada_columna, tablero,jugador_actual)
-
-    
-    #Actualizar tablero
-    tablero = actualizar_tablero(jugadores[jugador_actual], coordenada_fila, coordenada_columna, tablero,jugador_actual)
-    
-    #Comprobamos si ha ganado
-    if comprobar_ganador(jugadores[jugador_actual], tablero):
-        juego_en_curso = False
-        
-        #Dibujar tablero Ganador
-        os.system("cls")
-        print("Ganador: ",jugadores[jugador_actual][0])
+        os.system("clear")
+        #Nuevo turno
+        # Aquí cambie el + por una coma
+        print("Turno de: ", lstJugadores[jugador_actual])
+        #Dibujar tablero
         for linea in tablero:
             print(linea[0],"|", linea[1],"|", linea[2])
-        
+
         # print("0 1 2 3")
         # coordenadas_vertical = 1
-        #for linea in tablero:
-            #print(coordenadas_vertical, linea[0], linea[1], linea[2])
-            #coordenadas_vertical += 1
-        
-        
-    #Cambio de jugador
-    if ponerFicha == False:
-        jugador_actual = 1 if jugador_actual == 0 else 0
-    else:    
-        continue
-    # if jugador_actual == 0:
-    #     jugador_actual = 1
-    # else:
-    #     jugador_actual = 0
+        # for linea in tablero:
+        #     print(coordenadas_vertical, linea[0], linea[1], linea[2])
+        #     coordenadas_vertical += 1
+        tiempo = 0
+        tiempo2 = 0
+
+        #Selección de casilla
+        while True:
+            
+            contador = 0
+            if jugador_actual == 0:
+                lstJugadores[jugador_actual]
+                comienzoTiemJug1 = time.time()
+                op = seleccionCasilla()
+                finalTiemJug1 = time.time()
+                tiempo += finalTiemJug1 - comienzoTiemJug1
+                print(tiempo)
+            else:
+                lstJugadores[jugador_actual]
+                comienzoTiemJug2 = time.time()
+                op = seleccionCasilla()
+                finalTiemJug2 = time.time()
+                tiempo2 += finalTiemJug2 - comienzoTiemJug2
+                print(tiempo2)
+
+            if op == 1:
+                coordenada_fila, coordenada_columna = list(map(int,"31"))
+                break
+            elif op == 2:
+                coordenada_fila, coordenada_columna = list(map(int,"32"))
+                break 
+            elif op == 3:
+                coordenada_fila, coordenada_columna = list(map(int,"33"))
+                break
+            elif op == 4:
+                coordenada_fila, coordenada_columna = list(map(int,"21"))
+                break
+            elif op == 5:
+                coordenada_fila, coordenada_columna = list(map(int,"22"))
+                break
+            elif op == 6:
+                coordenada_fila, coordenada_columna = list(map(int,"23"))
+                break
+            elif op == 7:
+                coordenada_fila, coordenada_columna = list(map(int,"11"))
+                break
+            elif op == 8:
+                coordenada_fila, coordenada_columna = list(map(int,"12"))
+                break
+            elif op == 9:
+                coordenada_fila, coordenada_columna = list(map(int,"13"))
+                break
+
+
+        # Analiza si la posición elegida está ocupada
+        ponerFicha = poner_ficha(lstJugadores[jugador_actual], coordenada_fila,coordenada_columna, tablero,jugador_actual)
+
+
+        #Actualizar tablero
+        tablero = actualizar_tablero(lstJugadores[jugador_actual], coordenada_fila, coordenada_columna, tablero,jugador_actual)
+
+        #Comprobamos si ha ganado
+        if comprobar_ganador(lstJugadores[jugador_actual], tablero):
+            juego_en_curso = False
+
+            #Dibujar tablero Ganador
+            os.system("clear")
+            print("Ganador: ",list(lstJugadores[jugador_actual].keys())[0])
+
+            for linea in tablero:
+                print(linea[0],"|", linea[1],"|", linea[2])
+
+            # print("0 1 2 3")
+            # coordenadas_vertical = 1
+            #for linea in tablero:
+                #print(coordenadas_vertical, linea[0], linea[1], linea[2])
+                #coordenadas_vertical += 1
+
+
+        #Cambio de jugador
+        if ponerFicha == False:
+            jugador_actual = 1 if jugador_actual == 0 else 0
+        else:    
+            continue
+        # if jugador_actual == 0:
+        #     jugador_actual = 1
+        # else:
+        #     jugador_actual = 0
+
+# funcion menu
+
+def menu():
+    while True:
+        try:
+            print("*** JUEGO TIC TAC TOE ***".center(40))
+            print("MENU".center(40))
+            print("1. Jugar con un amigo ")
+            print("2. Consultar tabla de posiciones")
+            print("3. Reglas del juego")
+            print("4. Salir ")
+            op = int(input(">>> Opción (1-4)? "))
+            if op < 1 or op > 4:
+                print("Opción no válida. Escoja de 1 a 4.")
+                input("Presione Enter para continuar...")
+                continue
+            return op
+        except ValueError:
+            print("Opción no válida. Escoja de 1 a 4.")
+            input("Presione Enter para continuar...")
+
+
+    # Programa principal
+
+rutaGanadores = "Ejercicios-Entregar/Proyecto-Tic-Tac-Toe/lst-Ganadores.json"
+lstGanadores = []
+lstJugadores = []
+lstGanadores = cargarInfo(lstGanadores, rutaGanadores)
+
+while True:
+
+    op = menu()
+
+    if op == 1:
+        jugando()
+    elif op == 2:
+        consultarGanadores(lstGanadores)
+        pass
+    elif op == 3:
+        consultarLibro(lstLibros)
+        pass
+    elif op == 4:
+        print("Gracias por usar el software")
+        break
