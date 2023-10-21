@@ -20,7 +20,7 @@ El proceso que se ha seguido es el siguiente:
 5. Ahora se inicializa el juego llamando a la función inicializar_juego y guardando los valores que devuelve en variables.
 6. A continuación se crea un bucle controlado por la variable juego_en_curso.
     - Lo primero que hacemos en el bucle es comprobar si el tablero esta completo, llamando a la función tablero_completo, si está lleno damos valor False a la variable juego_en_curso, rompemos el bucle principal e informamos al usuario de que no hay ganador.
-    - Limpiamos siempre la pantalla con os.system(«clear»).
+    - Limpiamos siempre la pantalla con os.system(«cls»).
     - Imprime un mensaje con el nombre del jugador actual.
     - Dibujamos el tablero, con las coordenadas horizontales y verticales.
     - Imprime un mensaje indicando que seleccione coordenadas, se deben introducir dos números consecutivos, sin espacios, que serán las coordenadas elegidas por el jugador.
@@ -374,10 +374,10 @@ def jugando():
     while juego_en_curso:
         if tablero_completo(tablero):
             juego_en_curso = False
-            os.system("clear")
+            os.system("cls")
             print("Fin del juego, no hay ganador")
             break
-        os.system("clear")
+        os.system("cls")
         #Nuevo turno
         # Aquí cambie el + por una coma
         print("Turno de: ", list(lstJugadores[jugador_actual].keys())[0])
@@ -454,7 +454,7 @@ def jugando():
             juego_en_curso = False
 
             #Dibujar tablero Ganador
-            os.system("clear")
+            os.system("cls")
             print("Ganador: ",list(lstJugadores[jugador_actual].keys())[0])
             lstGanadores.append(lstJugadores[jugador_actual])
             #print(lstGanadores)
@@ -462,7 +462,7 @@ def jugando():
             for linea in tablero:
                 print(linea[0],"|", linea[1],"|", linea[2])
             input("Presione Enter para volver al menú")
-            os.system("clear")
+            os.system("cls")
 
             # print("0 1 2 3")
             # coordenadas_vertical = 1
