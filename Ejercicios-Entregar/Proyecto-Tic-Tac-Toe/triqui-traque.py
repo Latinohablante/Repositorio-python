@@ -59,9 +59,9 @@ def cargarInfo(lstGanadores, rutaGanadores):
             lstGanadores = json.load(fd) # json.load() --> carga el archivo
         else: 
             lstGanadores = []
-    except Exception as e: 
+    except Exception as e:
         print("Error al cargar la informacion\n" , e) 
-        return None 
+        return [] 
     
     # print(lstPersonal) # -> imprime si el archivo existe
     fd.close() #Si se carga todo cierre el archivo
@@ -108,7 +108,7 @@ def burbuja_optimus(lstGanadores):
     return lstGanadores
 
 
-# funcion listar libros por título
+# funcion listar Ganadores
 def listarGanadores(lstGanadores):
     ini = 0
     fin = 5
@@ -136,7 +136,7 @@ def listarGanadores(lstGanadores):
                         m = list(lstGanadores[f].items())[0][1]["tiempo"]
                         m1 = list(lstGanadores[f+1].items())[0][1]["tiempo"]
                         if m > m1:
-                            lstGanadores[f], lstGanadores[f+1] = lstGanadores[f+1], lstGanadores[f]
+                            lstGanadores[j], lstGanadores[j+1] = lstGanadores[j+1], lstGanadores[j]
                             intercambio = True
             elif k > k1:
                 lstGanadores[j], lstGanadores[j+1] = lstGanadores[j+1], lstGanadores[j]
@@ -147,7 +147,7 @@ def listarGanadores(lstGanadores):
         if intercambio == False:
             break
     #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
-    print("{:<20} {:<20} {:<20}".format("movimientos", "tiempo", "Ficha"))
+    print("{:<20} {:<20} {:<20}".format("movimientos", "tiempo", "Nombre"))
     while True:
         for i in range(ini,fin):
             if i >= len(lstGanadores):
@@ -155,7 +155,7 @@ def listarGanadores(lstGanadores):
             else:  
                 for elemento in lstGanadores[i]:  
                     #print(f"{lstGanadores[i][elemento]['titulo']}\t\t\t{lstGanadores[i][elemento]['autor']}\t\t\t${lstGanadores[i][elemento]['precio']:,}")
-                    print("{:<20} {:<20} {:<20}".format(lstGanadores[i][elemento]['movimientos'],lstGanadores[i][elemento]['tiempo'],lstGanadores[i][elemento]['ficha']))
+                    print("{:<20} {:<20} {:<20}".format(lstGanadores[i][elemento]['movimientos'],lstGanadores[i][elemento]['tiempo'],list(lstGanadores[i].keys())[0]))
         while True:
             continuar = int(input("\nSi desea continuar digite 1, si quiere salir presione 2: "))
             if continuar < 1 or continuar > 2:
@@ -164,8 +164,8 @@ def listarGanadores(lstGanadores):
             break
         if continuar == 2:
             return
-        ini +=3
-        fin +=3
+        ini +=5
+        fin +=5
     return lstGanadores
 
 
@@ -237,7 +237,8 @@ def agregarJugador1(lstGanadores,lstJugadores, ruta):
 
     nombre = leerNombreJugador("Ingrese el nombre del jugador 1: ")
     
-    while  existeNombre(nombre , lstGanadores):  
+
+    while  existeNombre(nombre , lstGanadores):
         print("-> Ya existe un jugador con ese nombre en la tabla de Ganadores") 
         input("Presione Enter para continuar")
         nombre = leerNombreJugador("Ingrese el nombre del jugador 1: ")
@@ -456,7 +457,11 @@ def jugando():
             #Dibujar tablero Ganador
             os.system("cls")
             print("Ganador: ",list(lstJugadores[jugador_actual].keys())[0])
-            lstGanadores.append(lstJugadores[jugador_actual])
+            if lstGanadores is None:
+                print("ingresando Ganador")
+                guardarGanador(lstGanadores,rutaGanadores)
+            else:
+                lstGanadores.append(lstJugadores[jugador_actual])
             #print(lstGanadores)
             guardarGanador(lstGanadores,rutaGanadores)
             for linea in tablero:
@@ -504,7 +509,7 @@ def menu():
 
     # Programa principal
 
-rutaGanadores = "Ejercicios-Entregar/Proyecto-Tic-Tac-Toe/lst-Ganadores.json"
+rutaGanadores = "Ejercicios-Entregar/Proyecto-Tic-Tac-Toe/probando.json"
 lstGanadores = []
 lstJugadores = []
 lstGanadores = cargarInfo(lstGanadores, rutaGanadores)

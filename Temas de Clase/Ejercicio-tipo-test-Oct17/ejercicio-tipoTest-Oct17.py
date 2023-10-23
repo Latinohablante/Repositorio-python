@@ -333,7 +333,7 @@ def cargarInfo(lstLibros , ruta):
             lstLibros = []
     except Exception as e: 
         print("Error al cargar la informacion\n" , e) 
-        return None 
+        return [] 
     
     # print(lstPersonal) # -> imprime si el archivo existe
     fd.close() #Si se carga todo cierre el archivo
