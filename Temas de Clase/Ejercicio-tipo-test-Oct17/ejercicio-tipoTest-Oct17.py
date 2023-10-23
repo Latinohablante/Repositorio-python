@@ -53,7 +53,7 @@ def burbuja_optimus(lstLibros):
             # k1 -> llave del codigo de la posicion j+1 de la lista
             k = list(lstLibros[j].items())[0][0]
             k1 = list(lstLibros[j+1].items())[0][0]
-            print(list(lstLibros[j].items())[0][1]["titulo"])
+            # print(list(lstLibros[j].items())[0][1]["titulo"])
             #print("K, K+1, nombre: ", k, k1, nom)
             if k > k1:
                 lstLibros[j], lstLibros[j+1] = lstLibros[j+1], lstLibros[j]
