@@ -116,7 +116,6 @@ def listarGanadores(lstGanadores):
     # print(lstGanadores)
     for i in range(n-1):
         intercambio = False
- 
         for j in range(n-1-i):
             # k -> llave del codigo de la posición j de la lista
             # k1 -> llave del codigo de la posicion j+1 de la lista
@@ -129,7 +128,6 @@ def listarGanadores(lstGanadores):
             if k == k1:
                 for l in range(n-1):
                     intercambio = False
- 
                     for f in range(n-1-l):
                         # k -> llave del codigo de la posición j de la lista
                         # k1 -> llave del codigo de la posicion j+1 de la lista
@@ -142,8 +140,6 @@ def listarGanadores(lstGanadores):
                 lstGanadores[j], lstGanadores[j+1] = lstGanadores[j+1], lstGanadores[j]
                 intercambio = True
 
-
- 
         if intercambio == False:
             break
     #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")

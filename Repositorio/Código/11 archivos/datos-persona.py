@@ -125,7 +125,7 @@ def cargarInfo(lstPersonal, ruta):
     return lstPersonal
     
 # *** PROGRAMA PRINCIPAL ***
-rutaFile = "Campus Lands\\Ciclo 1\\Grupo-C4-Sep\\Código\\11 archivos\\datpersonal.json"
+rutaFile = "Campus Lands\Ciclo 1\Grupo-C4-Sep\Código\11 archivos\datpersonal.json"
 lstPersonal = []
 lstPersonal =cargarInfo(lstPersonal, rutaFile)
 while True:
