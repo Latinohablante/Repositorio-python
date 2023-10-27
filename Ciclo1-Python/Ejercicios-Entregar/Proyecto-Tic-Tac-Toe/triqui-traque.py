@@ -51,7 +51,7 @@ def cargarInfo(lstGanadores, rutaGanadores):
             fd = open(rutaGanadores , "w")  
         except Exception as d:  
             print("Error al intentar abrir el archivo\n" , d) 
-            return None 
+            return [] 
     try:
         linea = fd.readline()
         if linea.strip() != "": # Si tiene el archivo algo de contenido cargará los datos, sino creará una lista vacia.
@@ -111,7 +111,7 @@ def burbuja_optimus(lstGanadores):
 # funcion listar Ganadores
 def listarGanadores(lstGanadores):
     ini = 0
-    fin = 5
+    fin = len(lstGanadores)
     n = len(lstGanadores)
     # print(lstGanadores)
     for i in range(n-1):
@@ -160,8 +160,8 @@ def listarGanadores(lstGanadores):
             break
         if continuar == 2:
             return
-        ini +=5
-        fin +=5
+        # ini +=5
+        # fin +=5
     return lstGanadores
 
 
@@ -376,7 +376,6 @@ def jugando():
             break
         os.system("cls")
         #Nuevo turno
-        # Aquí cambie el + por una coma
         print("Turno de: ", list(lstJugadores[jugador_actual].keys())[0])
         #Dibujar tablero
         for linea in tablero:
@@ -493,7 +492,7 @@ def menu():
             print("2. Consultar tabla de posiciones")
             print("3. Salir ")
             op = int(input(">>> Opción (1-3)? "))
-            if op < 1 or op > 4:
+            if op < 1 or op > 3:
                 print("Opción no válida. Escoja de 1 a 3.")
                 input("Presione Enter para continuar...")
                 continue
@@ -505,7 +504,7 @@ def menu():
 
     # Programa principal
 
-rutaGanadores = "Ejercicios-Entregar/Proyecto-Tic-Tac-Toe/probando.json"
+rutaGanadores = "Ciclo1-Python\Ejercicios-Entregar\Proyecto-Tic-Tac-Toe/probando.json"
 lstGanadores = []
 lstJugadores = []
 lstGanadores = cargarInfo(lstGanadores, rutaGanadores)
@@ -515,6 +514,7 @@ while True:
     op = menu()
 
     if op == 1:
+        lstJugadores = []
         jugando()
     elif op == 2:
         listarGanadores(lstGanadores)
