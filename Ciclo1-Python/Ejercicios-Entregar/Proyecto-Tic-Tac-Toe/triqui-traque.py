@@ -144,14 +144,15 @@ def listarGanadores(lstGanadores):
             break
     #print(f"\nTítulo \t\t\tAutor \t\t\tPrecio \t\tcódigo")
     print("{:<20} {:<20} {:<20}".format("movimientos", "tiempo", "Nombre"))
-    while True:
-        for i in range(ini,fin):
-            if i >= len(lstGanadores):
-                return
-            else:  
-                for elemento in lstGanadores[i]:  
-                    #print(f"{lstGanadores[i][elemento]['titulo']}\t\t\t{lstGanadores[i][elemento]['autor']}\t\t\t${lstGanadores[i][elemento]['precio']:,}")
-                    print("{:<20} {:<20} {:<20}".format(lstGanadores[i][elemento]['movimientos'],lstGanadores[i][elemento]['tiempo'],list(lstGanadores[i].keys())[0]))
+    # while True:
+    for i in range(ini,fin):
+        if i >= len(lstGanadores):
+            return
+        else:  
+            for elemento in lstGanadores[i]:  
+                #print(f"{lstGanadores[i][elemento]['titulo']}\t\t\t{lstGanadores[i][elemento]['autor']}\t\t\t${lstGanadores[i][elemento]['precio']:,}")
+                print("{:<20} {:<20} {:<20}".format(lstGanadores[i][elemento]['movimientos'],lstGanadores[i][elemento]['tiempo'],list(lstGanadores[i].keys())[0]))
+        """
         while True:
             continuar = int(input("\nSi desea continuar digite 1, si quiere salir presione 2: "))
             if continuar < 1 or continuar > 2:
@@ -162,6 +163,7 @@ def listarGanadores(lstGanadores):
             return
         # ini +=5
         # fin +=5
+        """
     return lstGanadores
 
 
@@ -518,7 +520,6 @@ while True:
         jugando()
     elif op == 2:
         listarGanadores(lstGanadores)
-        pass
     elif op == 3:
         print("Gracias por usar el software")
         break
