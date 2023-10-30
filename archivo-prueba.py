@@ -1,11 +1,11 @@
-import time
+#prueba ecarabajo
 
-v = time.timezone()
-#asctime() = Tue Oct 24 15:57:22 2023
-#localtime() = time.struct_time(tm_year=2023, tm_mon=10, tm_mday=24, tm_hour=15, tm_min=58, tm_sec=53, tm_wday=1, tm_yday=297, tm_isdst=0)
+puntos = int(input("ingrese el número de puntos: "))
+def coordenadaX(X):
+    X = input("Ingrese la coordenada X: ")
 
-print(v)
-
-empleado = {"Nombre": "Sergio Medina", "cargo":"programador", "salario":4000000}
-
-print(list(empleado.keys())[0])
+for i in range(0,puntos):
+    X = input("Ingrese la coordenada X: ")
+    Y = input("Ingrese la coordenada Y: ")
+    Z{i} = input("Ingrese la coordenada Z: ")
+    
