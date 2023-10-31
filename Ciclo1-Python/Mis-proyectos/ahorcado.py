@@ -8,7 +8,7 @@ time.sleep(1)
 input("Presiona Enter para empezar a adivinar")
 os.system("cls")
 time.sleep(0.5)
-palabra = "Avioneta"
+palabra = ""
 tu_palabra = ""
 vidas = 6
 
