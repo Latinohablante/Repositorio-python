@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio FORMULARIOS</title>
+</head>
+<body>
+    <h3 align="center">CAMPUS LAB</h3>
+    <h3 align="center">Ejercicio FORMULARIOS</h3>
+    <hr>
+    <br>
+    <form action="index.html" method="get">
+        <fieldset>
+        <legend>Indique sus preferencias por favor</legend>
+        <label for="fechanac">Elija una fecha: </label>
+        <input type="date" name="fechanac" id="fechanac">
+        <br>
+        <label for="archivo">Elija un fichero: </label>
+        <input type="file" name="archivo" id="archivo" accept=".png,.jpg,.gif,.doc">
+        <br>
+        <input type="radio" name="procesador" id="AMD" value="Ada">
+        <label for="Ada">AMD</label>
+        <input type="radio" name="procesador" id="inteli5" value="Python">
+        <label for="Python">Intel i5</label>
+        <input type="radio" name="procesador" id="inteli7" value="Java">
+        <label for="Java">Intel i7</label>
+        </fieldset>
+    </form>
+
+    <form action="index.html" method="get">
+        <fieldset>
+            <legend>Indique sus preferencias por favor</legend>
+            <input type="radio" name="asignatura" id="Matematicas" value="Ada">
+            <label for="Ada">Matemáticas</label>
+            <input type="radio" name="asignatura" id="Historia" value="Python">
+            <label for="Python">Historia</label>
+            <input type="radio" name="asignatura" id="Geografia" value="Java">
+            <label for="Java">Geografía</label>
+            <input type="radio" name="asignatura" id="Lengua" value="Java">
+            <label for="Java">Lengua</label>
+            <br>
+            <label for="fnombre">Nombre:</label>
+            <input type="text" name="fnombre" id="fnombre" maxlength="15" minlength="3" size="20" list="browser" pattern="[a-zA-Z]{1,15}">
+            <br>
+            <label for="fapellidos">Apellidos:</label>
+            <input type="text" name="fapellidos" id="fapellidos" maxlength="15" minlength="3" size="20" list="browser" pattern="[a-zA-Z]{1,15}">
+            <br>
+            <label for="fdireccion">Dirección:</label>
+            <input type="text" name="fdireccion" id="fdireccion" maxlength="15" minlength="3" size="20" list="browser" pattern="[a-zA-Z]{1,15}">
+            <br>
+            <label for="colorfav">Elija un color: </label>
+            <input type="color" name="colorfav" id="colorfav">
+            <br>
+            <label for="comentarios"></label>
+            <textarea name="comentarios" id="" cols="50" rows="10" placeholder="Utilice este cuadro para escribir"></textarea>
+            <br>
+
+            <label for="fechanac">Elija una fecha: </label>
+            <input type="date" name="fechanac" id="fechanac">
+            <br>
+            <select name="idiomas" id="idiomas">
+                <option value="Inglés">Ingles</option>
+                <option value="Español">Español</option>
+                <option value="Mandarín">Mandarín</option>
+                <option value="Árabe">Árabe</option>
+            </select>
+            <br>
+            <label for="time">Elija una hora:</label>
+            <input type="time">
+            <br>
+            <label for="archivo">Elija un fichero: </label>
+            <input type="file" name="archivo" id="archivo" accept=".png,.jpg,.gif,.doc">
+            <br>
+            <input type="checkbox" name="genero" id="mujer" value="mujer">
+            <label for="mujer">Mujer</label>
+            <input type="checkbox" name="genero" id="hombre" value="hombre">
+            <label for="hombre">Hombre</label>
+            <br>
+
+            
+        </fieldset>
+    </form>
