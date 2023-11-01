@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos Input</title>
+</head>
+<body>
+    <h1>Atributos Input</h1>
+    <hr>
+    <br>
+    <form action="index.html">
+        <label for="fnombre">Nombre:</label>
+        <input type="text" name="fnombre" id="fnombre" maxlength="15" minlength="3" placeholder="Ingrese su primer nombre" size="20" list="browser" value="Chrome" pattern="[a-zA-Z]{1,15}">
+        <!-- <datalist id="browser">
+            <option value="Chrome"></option>
+            <option value="Edge"></option>
+            <option value="Opera"></option>
+            <option value="Firefox"></option>
+
+        </datalist> -->
+        <br><br>
+        <label for="pass">Contraseña</label>
+        <input type="password" name="pass" id="pass">
+        <br>
+        <br>
+        <h3>Lenguaje de programación favorito</h5>
+        <br>
+        <input type="radio" name="lengprog" id="Ada" value="Ada">
+        <label for="Ada">Ada</label>
+        <br>
+        <input type="radio" name="lengprog" id="Python" value="Python" checked>
+        <label for="Python">Python</label>
+        <br>
+        <input type="radio" name="lengprog" id="Java" value="Java">
+        <label for="Java">Java</label>
+        <br>
+        <input type="radio" name="lengprog" id="Javascript" value="JavaScript">
+        <label for="Javascript">JavaScript</label>
+        <br>
+        <br>
+        <!-- Checkbox -->
+        Pasatiempos 
+        <br>
+        <input type="checkbox" name="pasatiempos" id="leer" value="leer">
+        <label for="pasatiempos">Leer</label>
+        <br>
+        <input type="checkbox" name="pasatiempos" id="cine" value="cine">
+        <label for="cine">Cine</label><br>
+        <input type="checkbox" name="pasatiempos" id="bailar" value="bailar">
+        <label for="bailar">Bailar</label><br>
+        <input type="checkbox" name="pasatiempos" id="programar" value="programar">
+        <label for="programar">Programar</label>
+        <br>
+        <br>
+        <!-- Mensaje de alerta -->
+        <input type="button" value="Ver mensaje" onclick="alert('Feliz Navidad')">
+        <br>
+        <br>
+        <!-- Seleccionar color -->
+        <label for="colorfav">Escoja un color: </label>
+        <input type="color" name="colorfav" id="colorfav">
+        <br>
+        <br>
+        <!-- Calendario -->
+        <label for="fechanac">Fecha de nacimiento: </label>
+        <input type="date" name="fechanac" id="fechanac">
+        <br>
+        <br>
+        <!-- Calendario máximo-->
+        <label for="fechanac">Ingrese una fecha anterior al año 2000: </label>
+        <input type="date" name="fechanac" id="fechanac" max="1999-12-31">
+        <br>
+        <br>
+        <!-- Calendario mínimo-->
+        <label for="fechanac">Ingrese una fecha posterior al año 2000: </label>
+        <input type="date" name="fechanac" id="fechanac" min="2000-01-01">
+        <br>
+        <br>
+        <!-- Calendario con hora-->
+        <label for="fecha-hora-nac">Fecha y hora de nacimiento: </label>
+        <input type="datetime-local" name="fecha-hora-nac" id="fecha-hora-nac">
+        <br>
+        <br>
+        <!-- Correo electrónico-->
+        <label for="email">Ingrese su correo electrónico: </label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <br>
+        <!-- Icono-->
+        <input type="image" src="../06-formularios/spiderman.png" alt="Icono de Spiderman" width="50px" onclick="alert('Nome quiero ir señor Stark')">
+        <br>
+        <br>
+        <!-- Subir archivo-->
+        <label for="archivo">Escoja un archivo: </label>
+        <input type="file" name="archivo" id="archivo" accept=".png,.jpg,.gif,.doc">
+        <br>
+        <br>
+        <!-- Archivo oculto/escondido-->
+        <input type="hidden" name="estadoform" value="completo">
+        <br>
+        <br>
+        <!-- Input Tipo mes-->
+        <label for="mesnac">Mes de nacimiento: </label>
+        <input type="month" name="mesnac" id="mesnac">
+        <br>
+        <br>
+        <!-- Input numérico-->
+        <label for="edad">Edad: </label>
+        <input type="number" name="edad" id="edad" min="17" max="40" value="25" step="3">
+        <br>
+        <br>
+        <!-- Input Rango-->
+        <label for="volumen">Seleccione el volumen: </label>
+        <input type="range" name="volumen" id="volumen" min="10" max="50" value="25" step="4">
+        <br><br>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpiar">
+    </form>
+    <br>
+    <br>
+    <form action="https://www.google.com/search" method="get">
+    <fieldset>
+        <legend>Busqueda</legend>
+            <!-- Input Busqueda-->
+            <label for="busqueda">Buscar en google:</label>
+            <input type="search" name="q" id="busqueda">
+            <input type="submit" value="Enviar">
+    </fieldset>
+    </form>
+    <br>
+    <br>
+    
+    <form action="index.html">
+    <!-- Comentarios-->
+    <label for="comentarios">Escriba sus comentarios:</label><br>
+    <textarea name="comentarios" id="" cols="30" rows="10"></textarea><br>
+    <input type="submit" value="Enviar">
+    </form>
+    <br>
+    
+    
+</body>
+</html>
