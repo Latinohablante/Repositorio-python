@@ -1,0 +1,29 @@
+/* el * es global */
+* {
+    color:gray;
+}
+/* el # es para los id */
+p {
+    color:blue
+}
+/* el . es para los class */
+.text-import {
+    color:red;
+    font-size: 1.5em;
+}
+/* el # es para los id */
+#text-html {
+    color:blue
+}
+div p sub {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style:oblique;
+    color: black;
+}
+div p .text-import {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+u, i, .text-import{
+    border:1px solid red;
+}
