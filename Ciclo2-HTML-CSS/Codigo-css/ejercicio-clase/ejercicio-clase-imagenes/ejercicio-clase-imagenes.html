@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicoi en clase imagenes, unificando todo</title>
+    <style>
+        body {
+            margin:20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+            line-height: 1.4;
+            
+        }
+        h2 {
+            color: #CC6600;
+            font-size: 1.6em;
+            line-height: 1.2;
+            margin-bottom: 0.3em;
+        }
+        
+        div {
+            margin-right: 1em;
+            
+            border:1px solid black;
+            background-image: url("imgs/fondo_menu.gif");
+            padding: 2px;
+            text-decoration: underline;
+            color: blue;
+        }
+        header {
+            display: flex;
+            position: relative;
+            
+        }
+        .noticias {
+            border:1px solid black;
+            height:200px;
+            width: 200px;
+        }
+        .publicidad {
+            border:1px solid black;
+            height:200px;
+            width: 200px;
+        }
+        aside:nth-child(1) > section {
+            height: 100px;
+            width: 100px;
+                background: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.322));
+            }
+        form {
+            align-content: right;
+        }
+        nav {
+            border: 1px solid black;
+            align
+        }
+    </style>
+</head>
+<body>
+    <header><img src="../ejercicio-clase-imagenes/imgs/logo.gif">
+        <form action="https://www.google.com/search" method="get">
+            <!-- Input Busqueda-->
+            <label for="busqueda">Buscar:</label>
+            <input type="search" name="q" id="busqueda">
+            <input type="submit" value="Enviar">
+            </form>
+            
+    </header>
+    <div>Lorem ipsum dolor sit amet</div>
+    <nav>Lorem ipsum dolor sit amet</nav>
+    <aside class="noticias" align="left">Este es el del lado izquierdo</aside>
+    <section>
+        
+        <article align="center">Hola este es un article</article>
+        
+    </section>
+    <aside class="publicidad" align="right">Este es el otro aside</aside>
+
+    
+    <section></section>
+    
+    
+</body>
+</html>
