@@ -52,24 +52,47 @@
         .noticias {
             border:1px solid black;
             height:200px;
-            width: 200px;
+            width: 100%;
         }
         .publicidad {
             border:1px solid black;
             height:200px;
-            width: 200px;
+            width: 100%;
         }
-        aside:nth-child(1) > section {
-            height: 100px;
-            width: 100px;
-                background: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.322));
-            }
         form {
             align-content: right;
         }
         nav {
             border: 1px solid black;
             
+        }
+
+        #principal{
+            display: flex;
+        }
+        #izquierda {
+            width: 20%;
+
+        }
+        #centro {
+            width: 60%;
+            padding: 10px;
+
+        }
+        #derecha {
+            width: 20%;
+
+        }
+        #info1 {
+            border:1px solid black;
+            height:200px;
+            width: 100%;
+
+        }
+        #info2 {
+            border:1px solid black;
+            height:200px;
+            width: 100%;
         }
     </style>
 </head>
@@ -92,12 +115,28 @@
             <li><a href="#">Amet</a></li>
         </ul>
     </nav>
-    <aside class="noticias" align="left">Este es el del lado izquierdo</aside>
-    <section>
-        <article align="center">Hola este es un article</article> 
-    </section>
-    <aside class="publicidad" align="right">Este es el otro aside</aside>
 
-    <section></section>
+    <div id="principal">
+
+        <section id="izquierda">
+            <aside class="noticias">Este es el del lado izquierdo</aside>
+            <aside class="publicidad">Este es el otro aside</aside>
+
+        </section>
+
+        <section id="centro">
+            <article >Hola este es un centro</article>
+        </section>
+
+       
+
+        <section id="derecha">
+            <aside id="info1">Este es el bloque derecho</aside>
+            <aside id="info2">Este es el bloque derecho de abajo</aside>
+        </section>
+        
+
+        <section></section>
+    </div>
 </body>
 </html>
