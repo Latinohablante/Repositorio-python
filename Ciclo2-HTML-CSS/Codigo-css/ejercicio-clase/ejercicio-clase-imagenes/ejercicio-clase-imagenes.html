@@ -12,6 +12,13 @@
             line-height: 1.4;
             
         }
+        body {
+            padding:30px
+        }
+        h3 {
+            color: #003366;
+            text-decoration: underline;
+        }
         h2 {
             color: #CC6600;
             font-size: 1.6em;
@@ -39,25 +46,51 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            
         }
         .navbar li {
             display: inline;
-            margin-right: 10px;
+            margin-right: 1em;
         }
         .navbar a {
+            font-size: 1.3em;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .footer {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .footer li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .footer a {
+            padding-right: 3px;
+            border-right: 1px solid black;
             text-decoration: none;
             color: blue;
             font-weight: bold;
         }
+        .footer li:nth-child(6) a {
+            border: none;
+        }
         .noticias {
+            font-size: 0.9em;
             border:1px solid black;
             height:200px;
             width: 100%;
         }
         .publicidad {
-            border:1px solid black;
+            margin-top: 10px;
+            font-size: 0.9em;
+            border:1px dotted black;
             height:200px;
             width: 100%;
+            color: #555;
+            background-color: rgb(253, 253, 195);
         }
         form {
             align-content: right;
@@ -71,7 +104,10 @@
             display: flex;
         }
         #izquierda {
+            display: flex;
+            flex-wrap: wrap;
             width: 20%;
+            
 
         }
         #centro {
@@ -93,6 +129,21 @@
             border:1px solid black;
             height:200px;
             width: 100%;
+        }
+        a {
+            color: blue
+        }
+        section aside span {
+            display:block;
+            color: #999
+
+        }
+        section .publicidad a {
+            color:#CC6600 ;
+        }
+        section article div p {
+            float: right;
+            width: 75%;
         }
     </style>
 </head>
@@ -119,13 +170,24 @@
     <div id="principal">
 
         <section id="izquierda">
-            <aside class="noticias">Este es el del lado izquierdo</aside>
-            <aside class="publicidad">Este es el otro aside</aside>
+            <aside class="noticias"><h3>Noticias</h3>
+                <br>
+                <span>dd/mm/aaaa</span><a href=""> Lorem ipsum dolor sit amet</a>
+                <span>dd/mm/aaaa</span><a href=""> Lorem ipsum dolor sit amet</a>
+                <span>dd/mm/aaaa</span><a href=""> Lorem ipsum dolor sit amet</a>
+                <span>dd/mm/aaaa</span><a href=""> Lorem ipsum dolor sit amet</a>
+                
+            </aside>
+            <aside class="publicidad">Publicidad  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut quis amet quas nesciunt unde, quisquam quam maiores porro temporibus, error .</p><a href="">Seguir leyendo</a></aside>
 
         </section>
 
         <section id="centro">
-            <article >Hola este es un centro</article>
+            <article ><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
+                <div>
+                    <img src="./imgs/imagen1.png" alt="" width="20%">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ea! Aspernatur nesciunt in beatae omnis neque itaque quaerat quam numquam voluptatem similique, temporibus sit dicta unde ipsum excepturi iure corrupti?</p>
+                </div></article>
         </section>
 
        
@@ -135,8 +197,18 @@
             <aside id="info2">Este es el bloque derecho de abajo</aside>
         </section>
         
-
+        
         <section></section>
     </div>
+    <footer>
+        <ul class="footer">
+            <li><a href="#">Nulla</a></li>
+            <li><a href="#">Pharetra</a></li>
+            <li><a href="#">Luctus</a></li>
+            <li><a href="#">Ipsum</a></li>
+            <li><a href="#">Proin</a></li>
+            <li><a href="#">Placerat</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
