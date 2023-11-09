@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores múltiples</title>
+    <style>
+        .classic {
+            border: 2px solid tomato;
+        }
+
+        .primary {
+            font-size:5rem;
+        }
+        .large {
+            width: 50%;
+        }
+        button.classic.large.primary {
+            color:limegreen
+        }
+        button.classic.large.primary:active {
+            border: 2px solid blue;
+        }
+        button[disabled] {
+            width: 25%;
+        }
+        [disabled] {
+            border: 2px solid black;
+            margin-left: 50px;
+        }
+        a[rel="nofollow"] {
+            background:  red;
+        }
+        [data-mood~="happy"] {
+            background: green;
+            color:white;
+            padding: 5px;
+        }
+        [lang|="es"] {
+            background: red;
+            color: white;
+            padding: 5px;
+        }
+        [lang|="es"]:hover {
+            background-color: blueviolet;
+        }
+        a[href]::after {
+            content: "URL: [" attr(href)"]";
+            display: inline-block;
+            color: purple;
+        }
+        a[href^="http:"]::after {
+            content: "(Página insegura): "attr(href);
+            color:red;
+        }
+        a[href^="http:"]:link {
+            color:brown;
+            border:1px solid greenyellow;
+        }
+        a[href^="http:"]:visited {
+            color:pink;
+            border:4px solid pink;
+        }
+        a[href$=".pdf"]::before {
+            content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAeFBMVEX///85QUw1Pkns7O5nbnbR09YsNUIvOET39/iXm6D8/Pw7Q06doKaSl51GTVdqb3i9v8Lh4uS+wcRKUVvKzM+usbVwdXyEiI7d3uHo6Oq3ub1kanJ9gokyO0ZTWmNDS1WMkZckLjxbYmuipqofKjl2eoGnq7BQVmHuop02AAAEpElEQVR4nO2daXeyOhRGY1CmOBQEUTQV6dv6///hxd62WkVkCMnBPvtDu6SVZq/EczJSxgAAAAAAAAAAAAAAAAAAAAAgi2+1wjVd7vpssvHqzKKK8Q+LPDVd7voEY8mbY0+Zb7rkdQnGXDTHGZLhgotRU4ZlOIYhDKkDQxjS5w9kCxjCkDwwhCF9YAhD+sAQhvSBIQzpA0MY0geGMKQPDJ/AcAVDGFIHhn/W0IMhHf6AYbuMD0NCwBCG9IEhDOnzBzI+DGFIHhjCkD4wHL7hpu1MFAnWafjJy33COOeNBUdCvofpQ+L+j39NtvPlQ5rX4In9cv6I0a53QcbCZYsKUoNwtpYGQ5bOTQny140OQcbido2wM/w40SPI2NQxIjhP9WWTzISimGo8RmsltnY/nmiJMt8E75oVhdQTRs+st1KrIJeawuiZyavOtMjtSH+nNTrqNExN9MrTvTZB4Zl5GkGsLWfoDaMXeHoCKl8FhgSZm2lQLHqj2jprt1g7HYov5gRPKxR9fxaF/WZS8JT5+02LwknMChaZP+9VUK7Mz05FyxbTTnWRW2Nh9IKX/tqpfI1M233y0VdA5UuNY94qXO/QTzsVbzQEC8V+BsQyofNsLGunfrRYhFE6gqeVCuWGUtfUYU3WW7V+gu8nxBZqijG/0nAj6D29LVIqKMmE0QvSgzpBJzM15q3AZ2/K0qJjbsxbiT9TNJTiucExbyVupsbwSKM3WsZmp0JQxKY9KghW3QcaNpH1/Dus845pUdg7Sp21Eib7TopCbml11kqI/o3aKwp+XJsWeITP4kP7KuR7umH0hyLzt482pMPoGddr3UwNrcA0xkraVSDfEeyNlrN5b7OxjcbUYU2CFlPhfEQ+jF6ybj5PbIemC92Myb+GiocP00Vuhs9C2aihytlAwugPReYXDRQHFEbP+G/1mykfDyiMnnFndRU5kRWYxlhJzWgjdK3A+Ld0u2G9Le3CnnYVVF7y2gRH+VBR2CtNpfHDbHZN0vXzEYhHtShk3rnoUXJT8iy8rUV3dnCukAev25/2WfQoZ8i8+6DeO8jroh9K8qvrOWX/N6QbPkv3lYpcxdThtKTkJQOxk+F1C1JwjsWPq3b48XmsICZMS0quz5C504pPoprN24YNmZvdizaCq1nINm3IrPfynFGEUTW9UeOGzNqWKQq+V9QbNW7os81raS2q2rxt3LDwmCxvd2uIWNVKvXlD9nnk7eru3FPWdyRheNr4/uv2UuHmbRqG/sevuzsrhTNrNAyL+19039SOeYkYMjc5R5u90u0yVAyZe878aqcOyRiyzfb/3Rp2pvS2hAzZ+pT5i0G94rlRQoYsOvIeVmAoGbJwLtUfWCZlyNKR+jMwtAzdQP0CBS3DPoDhFzAkTDdDgruRr/C7GBLfJ/jN1G5tKJP1hD7r5GYWqK5hMRK3h0DJHFBtQyHEafLh68v398+Louq6uHj19fPf1yve+vN7d67fvrWk3LUNhwoMhw8Mhw8Mhw8Mhw8Mhw8Mhw8Mh89dw+eh3NDmz4NdZhjni/GzsMjLnhrtWs/E0I5vAAAAAAAAAAAAAAAAAAAAgCHwHz8Yo9AXbXVmAAAAAElFTkSuQmCC);
+            width: 10px;
+        }
+        input#nombre:focus {
+            border: 6px solid red; 
+        }
+        form:focus-within {
+            background: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="classic primary large">Botón</button>
+    <br><br>
+    <button class="classic large" disabled>Botón 2</button>
+    <br><br>
+
+    <a href="http://www.campuslands.com" rel="nofollow">Campus Lands</a>
+    <br><br>
+    <a href="https://www.google.com" data-mood="happy">Google</a>
+    <br><br>
+    <div data-mood="happy sad">Uno</div>
+    <br><br>
+    <div lang="es-MX en-EN">English</div>
+    <br><br>
+    <a href="http://www.campuslands.com">CampusLands</a>
+    <br>
+    <a href="https://www.campuslands.com">Campus lands</a>
+    <br>
+    <a href="https://www.campuslands.pdf">Documento PDF de campuslands</a>
+    <br><br>
+    <form action="">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="lastname">Apellido: </label>
+        <input type="text" name="lastname" id="lastname">
+    </form>
+
+</body>
+</html>
