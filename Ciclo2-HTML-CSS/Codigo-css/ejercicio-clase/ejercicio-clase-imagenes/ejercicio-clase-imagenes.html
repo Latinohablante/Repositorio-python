@@ -10,6 +10,9 @@
             color:black;
             font-size: 0.9em;
             line-height: 1.4;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
             
         }
         body {
@@ -59,6 +62,7 @@
             font-weight: bold;
         }
         .footer {
+            background-color: #f7f7f7;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -78,6 +82,7 @@
             border: none;
         }
         .noticias {
+            background-color: #f7f7f7;
             font-size: 0.9em;
             border:1px solid black;
             height:200px;
@@ -101,6 +106,7 @@
         }
 
         #principal{
+            margin-top: 10px;
             display: flex;
         }
         #izquierda {
@@ -121,14 +127,16 @@
         }
         #info1 {
             border:1px solid black;
-            height:200px;
+            height:auto;
             width: 100%;
+            padding: 3px;
 
         }
         #info2 {
             border:1px solid black;
             height:200px;
             width: 100%;
+            margin-top: 10px;
         }
         a {
             color: blue
@@ -144,6 +152,10 @@
         section article div p {
             float: right;
             width: 75%;
+        }
+        #derecha #info1 h2 {
+            background-color: #CC6600;
+            color: black;
         }
     </style>
 </head>
@@ -186,15 +198,28 @@
             <article ><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
                 <div>
                     <img src="./imgs/imagen1.png" alt="" width="20%">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ea! Aspernatur nesciunt in beatae omnis neque itaque quaerat quam numquam voluptatem similique, temporibus sit dicta unde ipsum excepturi iure corrupti?</p>
-                </div></article>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ea! Aspernatur nesciunt in beatae omnis neque itaque quaerat quam numquam voluptatem similique, temporibus sit dicta unde ipsum excepturi iure corrupti? <br> <a href="">Seguir leyendo</a></p>
+                    
+                </div>
+            </article>
+            <article ><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
+                <div>
+                    <img src="./imgs/imagen1.png" alt="" width="20%">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ea! Aspernatur nesciunt in beatae omnis neque itaque quaerat quam numquam voluptatem similique, temporibus sit dicta unde ipsum excepturi iure corrupti? <br> <a href="">Seguir leyendo</a></p>
+                </div>
+            </article>
         </section>
 
        
 
         <section id="derecha">
-            <aside id="info1">Este es el bloque derecho</aside>
-            <aside id="info2">Este es el bloque derecho de abajo</aside>
+            <aside id="info1">
+                <h2>Phasellus blandit</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum sint placeat sunt. Maxime minus sed, pariatur esse eum ex. <br> <a href="">Seguir leyendo</a></p>
+                <h2>Phasellus blandit</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil eum sint placeat sunt. Maxime minus sed, pariatur esse eum ex. <br> <a href="">Seguir leyendo</a></p>
+            </aside>
+            
         </section>
         
         
