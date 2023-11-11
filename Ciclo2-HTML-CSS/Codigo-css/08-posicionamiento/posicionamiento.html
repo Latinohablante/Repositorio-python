@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 2rem;
+            font-size: 2rem;
+            font-family: sans-serif;
+            background-color: black;
+            height: 2600px;
+        }
+        h1 {
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+        }
+        div {
+            border-radius: 5px;
+            border:1px solid;
+            background-color: gray;
+        }
+        .static {
+            background-color: #dddddd;
+        }
+        .relative {
+            background-color: #81c476;
+        }
+        .absolute {
+            background-color: #fc9191;
+        }
+        .fixed {
+            background-color: #a8d5e2;
+        }
+        .sticky {
+            background-color: #e1e1ac;
+        }
+        /* CSS Position */
+        .static {
+            position:static;
+        }
+        .relative {
+            position: relative;
+            left:50px;
+            top:10px;
+            z-index:2;
+        }
+        .parent {
+            position: relative;
+        }
+        .absolute {
+            position: absolute;
+            top:10px
+
+        }
+        .fixed {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+        }
+        .fixed:hover {
+            background: violet;
+            cursor:pointer;
+            color: white;
+        }
+        .sticky {
+            position: sticky;
+            top:0px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>CSS Position</h1>
+    <div class="parent">
+        <div class="static">Static</div>
+        <div class="relative">Relative</div>
+        <div class="absolute">Absolute</div>
+        <div class="fixed">Fixed</div>
+        <div class="sticky">Sticky</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+        <div class="static">Static</div>
+    </div>
+    <div class="sticky">Sticky</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento punto rojo</title>
+    <style>
+        body {
+            margin: 20px;
+            border:1px solid blue;
+            padding:10px;
+            display: flex;
+            
+        }
+        .caja {
+            width: 300px;
+            height: 300px;
+            background: gray;
+            position: relative;
+            left: 20%;
+        }
+        .punto {
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            background: red;
+            position: relative;
+            top:60%;
+            left:60%;
+        } 
+    </style>
+</head>
+<body>
+    <div class="caja"><div class="punto"></div></div>
+</body>
+</html>

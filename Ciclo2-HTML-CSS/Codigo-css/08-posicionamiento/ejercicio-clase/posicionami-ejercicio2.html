@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio en clase 2: posicionamiento</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .secc1 {
+            background: blue;
+            height: 100px;
+        }
+        .secc2 {
+            display: inline-block;
+            background: cornflowerblue;
+            width: 50%;
+            height: 200px;
+        }
+        .secc3 {
+            display: inline-block;
+            background: gainsboro;
+            width: 50%;
+            height: 200px;
+        }
+        .secc4 {
+            width: 60%;
+            background: gray;
+            height: 500px;
+        }
+        .secc5 {
+            position:relative;
+            background: orange;
+            height:250px;
+            width: 40%;
+            top: -500px;
+            left: 60%;
+        }
+        .secc6 {
+            position:relative;
+            background: red;
+            height:250px;
+            width: 40%;
+            bottom: 500px;
+            left: 60%;
+        }
+    </style>
+</head>
+<body>
+    <div class="secc1">Sección 1</div>
+    <div class="secc2">Sección 2</div><div class="secc3">Sección 3</div>
+    <div class="secc4">Sección 4</div>
+    <div class="secc5">Sección 5</div>
+    <div class="secc6">Sección 6</div>
+</body>
+</html>
