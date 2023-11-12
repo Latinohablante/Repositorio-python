@@ -115,7 +115,14 @@ label {
 
 
 /* ? --- --- --- --- LISTA 3 --- --- --- --- */
-
+.lista3 p:only-child {
+	background: var(--azul);
+	color: white;
+}
 
 
 /* ? --- --- --- --- LISTA 4 --- --- --- --- */
+.lista4 p:only-of-type {
+	background: black;
+	color: white;
+}

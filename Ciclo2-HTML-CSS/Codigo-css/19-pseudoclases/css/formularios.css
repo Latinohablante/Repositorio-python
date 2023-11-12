@@ -87,3 +87,40 @@ body {
 
 
 /* ? ------------- Pseudoclases ------------- */
+.formulario .nombre:focus {
+	border:3px solid var(--azulPrimario);
+}
+
+.formulario .id:disabled {
+	background: var(--colorOscuro);
+}
+
+.formulario .correo:valid {
+	background: rgb(129, 172, 64);
+	border: none;
+}
+
+.formulario .correo:invalid {
+	background: rgb(245, 112, 112);
+	border: none;
+}
+
+.formulario .mensaje:required {
+	background: rgb(255, 255, 136);
+}
+
+.formulario .radio input:checked {
+	box-shadow:  0px 0px 10px 1px blue;
+}
+
+.formulario .checkbox input:default {
+	box-shadow:  0px 0px 10px 1px orange;
+}
+.formulario .edad:out-of-range {
+	background: red;
+	border:none;
+}
+.formulario .edad:in-range {
+	background: greenyellow;
+	border:none;
+}
