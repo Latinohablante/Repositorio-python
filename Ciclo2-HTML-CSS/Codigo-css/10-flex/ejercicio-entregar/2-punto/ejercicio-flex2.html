@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    .contenedor {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .tarjeta {
+      flex: 1;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      margin: 0 10px;
+    }
+
+    .titulo-tarjeta {
+      height: 40px;
+      background-color: blue;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cuerpo-tarjeta {
+      flex: 1;
+      padding: 10px;
+    }
+
+    .pie-tarjeta {
+      height: 30px;
+      background-color: red;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="contenedor">
+  <div class="col-izquierda">
+    <p>Columna izquierda</p>
+  </div>
+
+  <div class="derecha-alta">
+    <p>Derecha parte alta</p>
+  </div>
+
+  <div class="derecha-baja">
+    <p>Izquierda parte baja</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .flex-container {
+      display: flex;
+    }
+
+    .item {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      border: 1px solid #333;
+    }
+
+    .item1 {
+      order: 2;
+    }
+
+    .item2 {
+      order: 1;
+    }
+
+    .item3 {
+      order: 3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="flex-container">
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+</div>
+
+</body>
+</html>
