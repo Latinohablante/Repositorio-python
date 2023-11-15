@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiendo Flex</title>
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        .item {
+            border:1px solid tomato;
+            background: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .contenedor {
+            display: flex;
+            background: #ccc;
+            border:1px solid black;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            /* centrar contenido */
+            width: 80%;
+            margin: 0 auto;
+            height: 600px;
+            /* centrar contenido */
+
+            /* no permitir que el contenido se salga del contenedor */
+            flex-wrap: wrap;
+
+            /* reúne flex-direction y flex-wrap */
+            flex-flow: row wrap;
+
+            /* asigna espacio para que sea visiblemente agradable */
+            /* justify-content: space-between; */
+
+            /* espacio a la caja desde la mitad */
+            justify-content: space-around;
+
+            /* espacio igual entre el margen y las cajas */
+            justify-content: space-evenly;
+
+            justify-content: center;
+
+            justify-content: flex-end;
+
+            justify-content: flex-start;
+
+            align-items: center;
+        }
+        .contenedor2 {
+            display: flex;
+            background: #ccc;
+            border:1px solid black;
+            padding: 20px;
+            display: flex;
+            flex-flow: row wrap;
+            /* centrar contenido */
+            width: 80%;
+            margin: 0 auto;
+            height: 600px;
+            /* centrar contenido */
+            justify-content: flex-start;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aprendiendo Flex</h1>
+    <section class="contenedor">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+    </section>
+    <br>
+    <section class="contenedor2">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios en clase Flex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .contenedor1 {
+            border: 1px solid black;
+            background-color: #ccc;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin:0 auto;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-inline-start: 0;
+        }
+        .item1 {
+            font-family: sans-serif;
+            border:1px solid;
+            background: rgba(123,198,199,0.8);
+            padding: 3px;
+            margin:auto;
+            width: calc((98vw/5));
+        }
+        
+
+        .contenedor2 {
+            border: 1px solid black;
+            background-color: #ccc;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width:fit-content;
+            padding-inline-start: 0;
+            
+        }
+        .item2 {
+            font-family: sans-serif;
+            border:1px solid;
+            background: rgba(123,198,199,0.8);
+            padding: 5px;
+            margin:1px;
+            
+        }
+
+        .contenedor3 {
+            border: 1px solid black;
+            background-color: #ccc;
+            list-style: none;
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding-inline-start: 0;
+        }
+        .item3 {
+            font-family: sans-serif;
+            border:1px solid;
+            background: rgba(123,198,199,0.8);
+            padding: 3px;
+            margin:3px;
+            height: 300px;
+            width: calc(100vw - ( 3px*2)/ 3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio Flex 1</h1>
+    
+    <ul class="contenedor1">
+        <li class="item1">Home</li>
+        <li class="item1">Servicios</li>
+        <li class="item1">Opciones</li>
+        <li class="item1">Planes</li>
+        <li class="item1">Contacto</li>
+    </ul>
+
+    <h1>Ejercicio Flex 2</h1>
+    
+    <ul class="contenedor2">
+        <li class="item2">Home</li>
+        <li class="item2">Servicios</li>
+        <li class="item2">Opciones</li>
+        <li class="item2">Planes</li>
+        <li class="item2">Contacto</li>
+    </ul>
+
+    <h1>Ejercicio Flex 3</h1>
+    
+    <ul class="contenedor3">
+        <li class="item3">Solo tengo una línea</li>
+        <li class="item3">Este texto ocupa algo más que el de al lado</li>
+        <li class="item3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, fugiat unde odio earum voluptates odit rerum in perferendis ratione ipsum illum corporis quibusdam. Non sint optio nesciunt quia odit provident!</li>
+    </ul>
+</body>
+</html>
