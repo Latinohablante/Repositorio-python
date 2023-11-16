@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid: segundo ejercicio para entregar</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .grid-container {
+            display: grid;
+            background: lightgray;
+            height: 50vh;
+            width:60vh;
+            gap: 10px;
+            padding: 5px;
+            margin: 0 auto;
+            grid-template-areas:    "uno uno dos tres"
+                                    "uno uno cuatro cinco"
+                                    "seis siete ocho nueve";
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+        h1 {
+            text-align: left;
+            font-weight: normal;
+            font-size: 5vh;
+        }
+        p {
+            font-size: 1.5vh;
+        }
+        .grid-container .grid-item1 {
+            grid-area: uno;
+            border-radius: 5%;
+            color: white;
+            padding: 20px;
+            flex-grow: 2;
+        }
+        .grid-container .grid-item2 {
+            grid-area: dos;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .grid-container .grid-item3 {
+            grid-area: tres;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+
+        }
+        .grid-container .grid-item4 {
+            grid-area: cuatro;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .grid-container .grid-item5 {
+            grid-area: cinco;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .grid-container .grid-item6 {
+            grid-area: seis;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .grid-container .grid-item7 {
+            grid-area: siete;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+
+        }
+        .grid-container .grid-item8 {
+            grid-area: ocho;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            
+        }
+        .grid-container .grid-item9 {
+            grid-area: nueve;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .gold {
+            background-color: gold;
+        }
+        .black {
+            background-color: black;
+        }
+        .gray {
+            background-color: lightslategray;
+        }
+        img {
+            color: white;
+            width: 10vh;
+            height: 10vh;
+        }
+        .grid-container .grid-item7 img {
+            visibility:hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="black item grid-item1 ">
+            <h1>Grid Layout IV</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam eius ea soluta est maxime hic eligendi molestiae neque ut temporibus reprehenderit molestias voluptas impedit, illum dolorum at sed ipsa quam.</p>
+        </div>
+        <div class="item grid-item2 gold"></div>
+        <div class="gray grid-item3"><img src="./images/icon-megaphone.png" alt=""></div>
+        <div class="item grid-item4 black"><img src="./images/icon-bicycle.png" alt=""></div>
+        <div class="item grid-item5 gray"><img src="./images/icon-bug.png" alt=""></div>
+        <div class="item grid-item6 gold"><img src="./images/icon-fast-food.png" alt=""></div>
+        <div class="item grid-item7 black"><img src="./images/icon-fast-food.png" alt=""></div>
+        <div class="item grid-item8 gray"><img src="./images/icon-game-controller.png" alt=""></div>
+        <div class="item grid-item9 black">9</div>
+    </div>
+</body>
+</html>
