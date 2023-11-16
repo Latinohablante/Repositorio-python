@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiendo Grid CSS</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    
+    .grid-container {
+        background-color:  #2196F3;
+        padding: 10px;
+        display: grid;
+        margin: 0 auto;
+        grid-template-areas: "Encabezado Encabezado Encabezado"
+                                "Menu Menu Menu"
+                                "Aside-L Principal Aside-R"
+                                "Footer Footer Footer";
+        grid-template-rows: 20% 10% auto 20%;
+        grid-template-columns: 20% auto 20%;
+        /* grid-template-columns: 1fr 2fr 1fr; */
+        width: 80%;
+        height: 100vh;
+        column-gap: 3px;
+        row-gap: 3px;
+
+        
+    }
+    .grid-item {
+        background-color: rgba(255,255,255,0.8);
+        border: 1px solid black;
+        padding:20px;
+        font-size: 30px;
+        text-align: center;
+    }
+    .item1 {
+        grid-area:Encabezado;
+        
+    }
+    .item2 {
+        grid-area: Menu;
+
+    }
+    .item3 {
+        grid-area: Principal;
+    }
+    .item4 {
+        grid-area: Aside-R;
+    }
+    .item5 {
+        grid-area: Footer;
+    }
+    .item6 {
+        grid-area: Aside-L;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- .grid-container>.grid-item{Item $}*9 -->
+    <div class="grid-container">
+        <div class="grid-item item1">Encabezado</div>
+        <div class="grid-item item2">Menú</div>
+        <div class="grid-item item6">Aside L</div>
+        <div class="grid-item item3">Principal</div>
+        <div class="grid-item item4">Aside R</div>
+        <div class="grid-item item5">Footer</div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .grid-container1 {
+            display: grid;
+            background: lightgray;
+            grid-template-columns: auto auto auto;
+            height: 200px;
+            gap: 10px 10px;
+            padding: 10px;
+        }
+        .grid-container1 .grid-item1 {
+            background: orange;
+        }
+        .grid-container1 .grid-item2 {
+            background: greenyellow;
+        }
+        .grid-container1 .grid-item3 {
+            background: purple;
+        }
+
+        .grid-container2{
+            display: grid;
+            background: lightgray;
+            height: 200px;
+            gap: 10px 10px;
+            padding: 10px;
+            grid-template-areas:    "uno dos tres"
+                                    "cuatro dos seis"
+                                    "cuatro cinco seis";
+        }
+
+        .grid-container2 .grid-item1 {
+            grid-area: uno;
+            background: orange;
+        }
+        .grid-container2 .grid-item2 {
+            grid-area: dos;
+            background: orange;
+        }
+        .grid-container2 .grid-item3 {
+            grid-area: tres;
+            background: orange;
+        }
+        .grid-container2 .grid-item4 {
+            grid-area: cuatro;
+            background: green;
+        }
+        .grid-container2 .grid-item5 {
+            grid-area: cinco;
+            background: purple;
+        }
+        .grid-container2 .grid-item6 {
+            grid-area: seis;
+            background: purple;
+        }
+
+
+        .grid-container3{
+            display: grid;
+            background: lightgray;
+            height: 200px;
+            gap: 10px 10px;
+            padding: 10px;
+            grid-template-areas:    "uno dos tres"
+                                    "uno cinco tres"
+                                    "cuatro cinco seis";
+        }
+
+        .grid-container3 .grid-item1 {
+            grid-area: uno;
+            background: orange;
+        }
+        .grid-container3 .grid-item2 {
+            grid-area: dos;
+            background: orange;
+        }
+        .grid-container3 .grid-item3 {
+            grid-area: tres;
+            background: greenyellow;
+        }
+        .grid-container3 .grid-item4 {
+            grid-area: cuatro;
+            background: purple;
+            
+        }
+        .grid-container3 .grid-item5 {
+            grid-area: cinco;
+            background: purple;
+        }
+        .grid-container3 .grid-item6 {
+            grid-area: seis;
+            background: purple;
+        }
+
+        .grid-container4{
+            display: grid;
+            background: lightgray;
+            height: 200px;
+            gap: 10px 10px;
+            padding: 10px;
+            grid-template-areas:    "uno uno dos"
+                                    "tres cuatro cuatro"
+                                    "cinco cinco seis";
+        }
+
+        .grid-container4 .grid-item1 {
+            grid-area: uno;
+            background: orange;
+        }
+        .grid-container4 .grid-item2 {
+            grid-area: dos;
+            background: orange;
+        }
+        .grid-container4 .grid-item3 {
+            grid-area: tres;
+            background: greenyellow;
+        }
+        .grid-container4 .grid-item4 {
+            grid-area: cuatro;
+            background: greenyellow;
+            
+        }
+        .grid-container4 .grid-item5 {
+            grid-area: cinco;
+            background: purple;
+        }
+        .grid-container4 .grid-item6 {
+            grid-area: seis;
+            background: purple;
+        }
+    </style>
+</head>
+<body>
+    <h1>Primer Ejercicio</h1>
+    <div class="grid-container1">
+        <div class="items grid-item1">Item 1</div>
+        <div class="items grid-item2">Item 2</div>
+        <div class="items grid-item3">Item 3</div>
+    </div>
+    <br>
+    <br>
+    <h1>Segundo Ejercicio</h1>
+    <div class="grid-container2">
+        <div class="grid-item1"></div>
+        <div class="grid-item2"></div>
+        <div class="grid-item3"></div>
+        <div class="grid-item4"></div>
+        <div class="grid-item5"></div>
+        <div class="grid-item6"></div>
+    </div>
+    <br>
+    <div class="grid-container3">
+        <div class="items grid-item1">Item 1</div>
+        <div class="items grid-item2">Item 2</div>
+        <div class="items grid-item3">Item 3</div>
+        <div class="grid-item4">Item 4</div>
+        <div class="grid-item5">Item 5</div>
+        <div class="grid-item6">Item 6</div>
+    </div>
+    <br>
+    <br>
+    <div class="grid-container4">
+        <div class="items grid-item1">Item 1</div>
+        <div class="items grid-item2">Item 2</div>
+        <div class="items grid-item3">Item 3</div>
+        <div class="grid-item4">Item 4</div>
+        <div class="grid-item5">Item 5</div>
+        <div class="grid-item6">Item 6</div>
+    </div>
+    
+</body>
+</html>
