@@ -17,18 +17,19 @@
             height: 50vh;
             width:60vh;
             gap: 10px;
-            padding: 5px;
+            padding: 50px;
             margin: 0 auto;
             grid-template-areas:    "uno uno dos tres"
                                     "uno uno cuatro cinco"
                                     "seis siete ocho nueve";
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
+            
         }
         h1 {
             text-align: left;
             font-weight: normal;
-            font-size: 5vh;
+            font-size: 3vh;
         }
         p {
             font-size: 1.5vh;
@@ -38,7 +39,8 @@
             border-radius: 5%;
             color: white;
             padding: 20px;
-            flex-grow: 2;
+            
+            word-wrap: break-word;
         }
         .grid-container .grid-item2 {
             grid-area: dos;
@@ -46,7 +48,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-grow: 1;
+        
         }
         .grid-container .grid-item3 {
             grid-area: tres;
@@ -54,7 +56,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-grow: 1;
+            
 
         }
         .grid-container .grid-item4 {
@@ -63,7 +65,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-grow: 1;
+          
         }
         .grid-container .grid-item5 {
             grid-area: cinco;
