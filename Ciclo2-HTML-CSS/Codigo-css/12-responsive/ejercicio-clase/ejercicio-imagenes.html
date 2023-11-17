@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .img1 {
+            background-image: url(./imagenes/papanoel1.png);
+            height: 256px;
+            width: 256px;
+            grid-area: papanoel1;
+        }
+        .img2 {
+            background-image: url(./imagenes/papanoel2.png);
+            height: 256px;
+            width: 256px;
+            grid-area: papanoel2;
+        }
+        .img3 {
+            background-image: url(./imagenes/papanoel3.png);
+            height: 256px;
+            width: 256px;
+            grid-area: papanoel3;
+        }
+        .img4 {
+            background-image: url(./imagenes/cerdo.png);
+            height: 256px;
+            width: 256px;
+            grid-area: cerdo;
+        }
+       
+        /* MEDIA QUERI MOVIL 0-480 */
+        @media (max-width:480px) {
+            body {
+            display: grid;
+            grid-template-areas:    "papanoel1 "
+                                    "papanoel2"
+                                    "papanoel3 "
+                                    "cerdo";
+            font-weight: bolder;
+            gap: 5px;
+        }
+        }
+
+        /* MEDIA QUERI TABLET 480 - 768 */
+        @media (min-width:480px) and (max-width:768px) {
+            body {
+            display: grid;
+            grid-template-areas:    "papanoel1 papanoel2"
+                                    "papanoel3 cerdo";
+            font-weight: bolder;
+            gap: 5px;
+        }
+        }
+
+        /* MEDIA QUERI PC 768 - EN ADELANTE */
+        @media (min-width:768px) {
+            body {
+            display: grid;
+            grid-template-areas: "papanoel1 cerdo papanoel3 papanoel2";
+            font-weight: bolder;
+            gap: 5px;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="img1"></div>
+    <div class="img2"></div>
+    <div class="img3"></div>
+    <div class="img4"></div>
+</body>
+</html>
