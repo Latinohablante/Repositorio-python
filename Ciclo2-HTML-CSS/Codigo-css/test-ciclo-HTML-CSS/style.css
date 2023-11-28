@@ -269,6 +269,12 @@ footer {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
+    /* IMAGENES */
+    .contenido-articles div img {
+        width: 270px;
+        height: auto;
+        border-radius: 10px;
+    }
 
 }
 
@@ -286,6 +292,13 @@ footer {
                                 "tres tres";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+    }
+
+    /* IMAGENES */
+    .contenido-articles div img {
+        width: 250px;
+        height: auto;
+        border-radius: 10px;
     }
     .tres {
         width: 300px;
