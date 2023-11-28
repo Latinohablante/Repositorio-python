@@ -1,0 +1,290 @@
+/* RESET  */
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1 {
+    color:var(--quinto-color)
+}
+
+.fa-star, .fa-thumbs-up, .fa-check{
+    font-size: 2.7em;
+    color: white;
+}
+
+
+/* VARIABLES DE COLORES  */
+:root {
+    --primer-color:black;
+    --segundo-color:#b49b85;
+    --tercer-color:#536d88;
+    --cuarto-color:#19274e;
+    --quinto-color:#0f132e;
+    --hover-nav: #5E5D6E;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.navbar {
+    height: 70px;
+    background: white;
+    padding: 0 50px;
+    color: var(--primer-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    max-width: 1020px;
+}
+
+.menu a {
+    color: var(--primer-color);
+    text-decoration: none;
+    font-weight: 1em;
+    padding: 0 10px;
+    transition: 0.4s;
+}
+.menu a:hover {
+    color: #5E5D6E;
+    cursor: pointer;
+} 
+
+/* BANNER */
+#banner {
+    margin-top: 70px;
+    background-image: url(./imgs/enium-fondo.jpg);
+    height: 45vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contenido-banner {
+    display: flex;
+    justify-content: center;
+    
+}
+
+/* PERSONAS */
+
+#personas{
+    padding: 50px 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+#personas2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#personas div, #personas2 div {
+    padding: 30px 30px;
+}
+#personas div h1, #personas2 div h1 {
+    color: var(--quinto-color);
+    margin: 15px 0px;
+
+}
+#personas div p,  #personas2 div p{
+    color:black;
+    font-size: 18px;
+}
+.boton-saber-mas {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 15px 40px;
+    border: 3px solid var(--quinto-color);
+    margin-top: 15px;
+    transition: background 0.5s linear;
+    -webkit-transition: background 1s linear;
+    font-size:large;
+    background: black;
+
+}
+.boton-saber-mas:hover {
+    background: #4A4959;
+    font-size: 1.1em;
+    
+}
+
+/* ICONOS */
+#iconos {
+    background:#1C1D22;
+    
+}
+#iconos h1, #iconos2 h1 {
+    text-align: center;
+    color: white;
+}
+#iconos2 {
+    background: var(--tercer-color);
+    color: var(white);
+}
+.contenido-iconos {
+    padding: 50px;
+    text-align: center;
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:    "uno dos tres";
+    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.contenido-iconos div h6 {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+    margin: 10px 0px;
+
+}
+.contenido-iconos div p {
+    color: #001F3F;
+    font-size: 15px;
+    
+}
+
+
+.uno {
+    grid-area: uno;
+}
+.dos {
+    grid-area: dos;
+}
+.tres {
+    grid-area: tres;
+}
+
+/* ARTICLES */
+
+#articles {
+    background:whitesmoke;
+    
+}
+#articles h1, #articles2 h1 {
+    text-align: center;
+    color: black;
+}
+#articles2 {
+    background: var(--tercer-color);
+    color: var(white);
+}
+.contenido-articles {
+    padding: 50px;
+    text-align: center;
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:    "uno dos";
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.contenido-articles div img {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+.contenido-articles div h6 {
+    color: black;
+    font-size: 18px;
+    font-weight: 100;
+    margin: 10px 0px;
+
+}
+.contenido-articles div p {
+    color: #001F3F;
+    font-size: 15px;
+    
+}
+
+
+#articles-mobile {
+    border: none;
+    background-origin: padding-box;
+}
+.boton-articles {
+    text-align: center;
+    padding-bottom: 50px;
+}
+.uno {
+    grid-area: uno;
+}
+.dos {
+    grid-area: dos;
+}
+
+
+
+/* FOOTER */
+footer {
+    background: black;
+    color: #536d88;
+    text-align: center;
+    transition: 0.4s;
+    padding: 10px 0;
+    height: 210px;
+
+}
+
+
+
+/* RESPONSIVE */
+@media(max-width:630px) {
+    /* BANNER */
+    .contenido-banner {
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+    }
+    /* PERSONAS */
+    #personas, #personas2 {
+        flex-direction: column;
+    }
+
+    /* ICONOS */
+    .contenido-iconos {
+        grid-template-areas:    "uno"
+                                "dos"
+                                "tres";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    .contenido-articles {
+        grid-template-areas:    "uno"
+                                "dos";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+}
+
+@media (min-width:630px) and (max-width:968px) {
+    /* BANNER */
+    .contenido-banner {
+        display: flex;
+        justify-content: center;
+        width: 400px;
+        height: 400px;
+    }
+    /* ICONOS */
+    .contenido-iconos {
+        grid-template-areas:    "uno dos"
+                                "tres tres";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
