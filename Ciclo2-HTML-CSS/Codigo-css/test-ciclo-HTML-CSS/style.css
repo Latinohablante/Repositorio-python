@@ -294,6 +294,12 @@ footer {
         grid-template-rows: 1fr 1fr;
     }
 
+    .contenido-articles {
+        grid-template-areas:    "uno dos";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+
     /* IMAGENES */
     .contenido-articles div img {
         width: 250px;
